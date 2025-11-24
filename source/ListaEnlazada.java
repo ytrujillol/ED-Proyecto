@@ -58,4 +58,16 @@ public class ListaEnlazada<T> {
     public boolean isEmpty(){
         return size == 0;
     }
+    public int find(T data){
+        Nodo<T> node = head;
+        int c=0;
+        while(node != null && !data.equals(node.value)){
+            node=node.next;
+            c++;
+        }
+        if(node==null){
+            return -1;
+        }
+        return c;
+    }
 }

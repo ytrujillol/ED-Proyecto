@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Tutorías</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f6f8fa; color: #222; margin: 0; }
+        .container { max-width: 570px; margin: 40px auto; background: #fff; border-radius: 8px; box-shadow: 0 0 16px rgba(0,0,0,.05); padding: 32px; }
+        h1 { color: #2563eb; }
+        .btn { 
+            display: block;
+            width: 100%;
+            margin: 16px 0;
+            padding: 12px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 6px;
+            background: #2563eb;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn.secondary { background: #e5e7eb; color: #222; border: 1px solid #2563eb;}
+        .btn:hover { background: #1432b3 }
+        .btn.secondary:hover { background: #c7d2fe }
+        .tabs { margin-bottom: 28px; display: flex; gap: 5px;}
+        .tab-btn {
+            background: none;
+            border: none;
+            color: #2563eb;
+            font-size: 1rem;
+            padding: 12px 16px;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+        }
+        .tab-btn.active { border-bottom: 2px solid #2563eb; font-weight: bold }
+        .hidden { display: none; }
+        label { display: block; margin-top: 14px; margin-bottom: 4px; font-weight: bold; }
+        select, textarea, input[type=text] {
+            width: 100%; padding: 10px;
+            border-radius: 4px; border: 1px solid #e5e7eb;
+            margin-bottom: 16px; font-size: 1rem;
+        }
+        .options-list { margin: 0; padding: 0; list-style: none; }
+        .options-list li { 
+            padding: 12px; background: #f1f5f9; margin-bottom: 12px; border-radius: 5px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .cite-card { background: #f3f4f6; padding: 16px; border-radius: 6px; margin-bottom: 16px; }
+        .cite-info { font-size: 0.97rem; color: #333 }
+        .badge { display: inline-block; padding: 5px 10px; border-radius: 999px; font-size: 0.85em; }
+        .low { background: #d1fae5; color: #065f46 }
+        .medium { background: #fee2e2; color: #b91c1c }
+        .high { background: #fef08a; color: #92400e }
+        @media (max-width: 600px) { .container { padding: 12px; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="tabs">
+            <button class="tab-btn active" id="tabInicioBtn" onclick="showTab('inicio')">Inicio</button>
+            <!--<button class="tab-btn" id="tabSolicitarBtn" onclick="showTab('solicitud')">Solicitar Tutoría</button>
+            <!--<button class="tab-btn" id="tabHorarioBtn" onclick="showTab('horario')">Elegir Tutor/Horario</button>
+            <button class="tab-btn" id="tabHistorialBtn" onclick="showTab('historial')">Historial de Tutorías</button>
+            <button class="tab-btn" id="tabProgramadasBtn" onclick="showTab('programadas')">Tutorías Programadas</button>
+            <button class="tab-btn" id="tabCancelarBtn" onclick="showTab('cancelar')">Cancelar Tutorías</button>
+    -->
+        </div>
+        <!-- INICIO -->
+        <div id="inicioTab">
+            <h1>Bienvenido, Estudiante</h1>
+            <p>Gestión de tutorías universitarias. Selecciona una opción:</p>
+            <button class="btn" onclick="showTab('solicitud')">Programar una tutoría</button>
+            <button class="btn secondary" onclick="showTab('historial')">Ver historial de tutorías</button>
+            <button class="btn secondary" onclick="showTab('programadas')">Ver tutorías programadas</button>
+            <button class="btn secondary" onclick="showTab('cancelar')">Cancelar tutorías</button>
+        </div>
+
+        <!-- SOLICITUD DE TUTORIA -->
+        <div id="solicitudTab" class="hidden">
+            <h2>Solicitar tutoría</h2>
+            <form id="solicitudForm" onsubmit="return false;">
+                <label for="asignatura">Asignatura</label>
+                <select id="asignatura" required>
+                    <option value="">Seleccione una asignatura</option>
+                    <option value="Matemáticas">Matemáticas</option>
+                    <option value="Física">Física</option>
+                    <option value="Programación">Programación</option>
+                    <option value="Electrónica">Electrónica</option>
+                </select>
+
+                <label for="prioridad">Prioridad</label>
+                <select id="prioridad" required>
+                    <option value="Baja">Baja</option>
+                    <option value="Media">Media</option>
+                    <option value="Alta">Alta</option>
+                </select>
+
+                <label for="observaciones">Observaciones</label>
+                <textarea id="observaciones" rows="3" placeholder="Motivo o detalles..."></textarea>
+
+                <button class="btn" onclick="showTab('horario')">Siguiente</button>
+            </form>
+        </div>
+
+        <!-- ELECCIÓN DE TUTOR Y HORARIO -->
+        <div id="horarioTab" class="hidden">
+            <h2>Seleccione tutor y horario</h2>
+            <ul class="options-list">
+                <li>
+                    <div>
+                        <strong>Camila Torres</strong> <br>
+                        <span>Asignatura: Matemáticas</span> <br>
+                        <span>Horario: 10:00 - 11:00 am, <strong>Salón 106, Edificio 401</strong></span>
+                    </div>
+                    <button class="btn secondary" onclick="alert('Tutoría agendada con Camila Torres')">Seleccionar</button>
+                </li>
+                <li>
+                    <div>
+                        <strong>Juan Martínez</strong> <br>
+                        <span>Asignatura: Física</span> <br>
+                        <span>Horario: 12:00 - 13:00, <strong>Salón 106, Edificio 401</strong></span>
+                    </div>
+                    <button class="btn secondary" onclick="alert('Tutoría agendada con Juan Martínez')">Seleccionar</button>
+                </li>
+            </ul>
+            <button class="btn secondary" onclick="showTab('inicio')">Volver a inicio</button>
+        </div>
+
+        <!-- HISTORIAL DE TUTORIAS -->
+        <div id="historialTab" class="hidden">
+            <h2>Historial de tutorías</h2>
+            <div class="cite-card">
+                <div class="cite-info">
+                    <strong>Asignatura:</strong> Matemáticas <br>
+                    <strong>Tutor:</strong> Camila Torres <br>
+                    <strong>Fecha:</strong> 20/11/2025 <br>
+                    <strong>Hora:</strong> 10:00 - 11:00 <br>
+                    <strong>Salón:</strong> 106, Edificio 401 <br>
+                    <span class="badge low">Prioridad: Baja</span>
+                </div>
+            </div>
+            <div class="cite-card">
+                <div class="cite-info">
+                    <strong>Asignatura:</strong> Programación <br>
+                    <strong>Tutor:</strong> Juan Martínez <br>
+                    <strong>Fecha:</strong> 17/11/2025 <br>
+                    <strong>Hora:</strong> 14:00 - 15:00 <br>
+                    <strong>Salón:</strong> 106, Edificio 401 <br>
+                    <span class="badge high">Prioridad: Alta</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- CITAS PROXIMAS (Programadas) -->
+        <div id="programadasTab" class="hidden">
+            <h2>Tutorías programadas</h2>
+            <div class="cite-card">
+                <div class="cite-info">
+                    <strong>Asignatura:</strong> Física <br>
+                    <strong>Tutor:</strong> Juan Martínez <br>
+                    <strong>Fecha:</strong> 28/11/2025 <br>
+                    <strong>Hora:</strong> 12:00 - 13:00 <br>
+                    <strong>Salón:</strong> 106, Edificio 401 <br>
+                    <span class="badge medium">Prioridad: Media</span>
+                </div>
+            </div>
+            <div class="cite-card">
+                <div class="cite-info">
+                    <strong>Asignatura:</strong> Matemáticas <br>
+                    <strong>Tutor:</strong> Camila Torres <br>
+                    <strong>Fecha:</strong> 30/11/2025 <br>
+                    <strong>Hora:</strong> 10:00 - 11:00 <br>
+                    <strong>Salón:</strong> 106, Edificio 401 <br>
+                    <span class="badge low">Prioridad: Baja</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- CANCELAR TUTORIAS -->
+        <div id="cancelarTab" class="hidden">
+            <h2>Cancelar tutoría</h2>
+            <p>Seleccione una tutoría programada para cancelar:</p>
+            <ul class="options-list">
+                <li>
+                    <div>
+                        <strong>Física</strong> <br>
+                        Tutor: Juan Martínez <br>
+                        28/11/2025, 12:00 - 13:00 <br>
+                        Salón 106, Edificio 401 <br>
+                    </div>
+                    <button class="btn secondary" onclick="alert('Tutoría cancelada')">Cancelar</button>
+                </li>
+                <li>
+                    <div>
+                        <strong>Matemáticas</strong> <br>
+                        Tutor: Camila Torres <br>
+                        30/11/2025, 10:00 - 11:00 <br>
+                        Salón 106, Edificio 401 <br>
+                    </div>
+                    <button class="btn secondary" onclick="alert('Tutoría cancelada')">Cancelar</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Tabs navigation
+        function showTab(tab) {
+            const tabs = ['inicio', 'solicitud', 'horario', 'historial', 'programadas', 'cancelar'];
+            tabs.forEach(t => {
+                document.getElementById(t + 'Tab').classList.add('hidden');
+                document.getElementById('tab'+capitalize(t)+'Btn')?.classList.remove('active');
+            });
+            document.getElementById(tab + 'Tab').classList.remove('hidden');
+            document.getElementById('tab'+capitalize(tab)+'Btn')?.classList.add('active');
+        }
+        function capitalize(s) {
+            return s.charAt(0).toUpperCase() + s.slice(1);
+        }
+
+        // Set default tab to Inicio
+        showTab('inicio');
+    </script>
+</body>
+</html>
