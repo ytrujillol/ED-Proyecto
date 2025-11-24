@@ -1,5 +1,5 @@
-import jsource.ListaEnlazada.java;
-class Tutores(){
+import jsource.ListaEnlazada;
+class Tutores{
   //atributos
   private String documento;
   private String nombre;
@@ -10,8 +10,8 @@ class Tutores(){
     this.documento=documento;
     this.nombre=nombre;
     this.correoInstitucional=correoInstitucional;
-    this.horariosDisponibles=new ListaEnlazada();
-    this.asignaturasQueDicta=new ListaEnlazada();
+    this.horariosDisponibles=new ListaEnlazada<>();
+    this.asignaturasQueDicta=new ListaEnlazada<>();
   }
   //setters y getters
   public String getDocumento() {
