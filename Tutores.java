@@ -52,10 +52,14 @@ class Tutores(){
     asignaturasQueDicta.insert(asignatura);
   }
   public void eliminarHorario(String horario){
-    horariosDisponibles.remove(find(horario));
+    int index=horariosDisponibles.find(horario);
+    if(index==-1) return;
+    horariosDisponibles.remove(index);
   }
   public void eliminarAsignatura(String asignatura){
-    asignaturasQueDicta.remove(find(asignatura));
+    int index =asignaturasQueDicta.find(asignatura);
+     if(index==-1) return;
+    asignaturasQueDicta.remove(index);
   }
   
 }
