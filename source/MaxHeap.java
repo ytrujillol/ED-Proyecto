@@ -1,6 +1,7 @@
 /* Implementación de montículo usando cualquier objeto genérico
  * Que permite la comparación entre estos con la clase Comparable
  */
+package source;
 
 public interface MaxHeap<T extends Comparable<T>> {
     /* Se insertan elementos en el heap de cualquier clase

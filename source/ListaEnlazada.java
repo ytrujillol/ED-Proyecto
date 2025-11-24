@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package ed.proyecto;
+package source;
 
 /**
  *
@@ -37,7 +37,7 @@ public class ListaEnlazada<T> {
         if(index >= size){
             System.out.println("No se puede eliminar. Indice mayor o igual que el tamaño");
         } else {
-            Nodo node = head;
+            Nodo<T> node = head;
             for(int x=0; x <= index; x++){
                 node = node.next;
             }
