@@ -17,7 +17,7 @@ public class Nodo<T> {
 
     // Sólo valor del nodo.
     public Nodo(T value) {
-        this.value = this.value;
+        this.value = value;
     }
 
     // Valor junto con la referencia al siguiente elemento.

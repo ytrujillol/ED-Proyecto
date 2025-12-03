@@ -8,56 +8,83 @@ package source;
  *
  * @author adria_6
  */
-public class ListaEnlazada<T> {
-    Nodo<T> head;
-    int size;
+public class ListaEnlazada<T> implements LinkedList<T> {
+    private Nodo<T> head;
+    private Nodo<T> tail;
+    private int size;
 
     public ListaEnlazada() {
-        head = null;
+        head = tail = null;
         size = 0;
     }
 
-    public int getSize() {
+    @Override
+    public int size() {
         return size;
     }
-    
-    public void insert(T data){
-        Nodo<T> newNode = new Nodo<>(data);
-        if(head == null){
-            head = newNode;
+
+    @Override
+    public void insert(T value) {
+        Nodo<T> newNode = new Nodo<>(value);
+
+        if (isEmpty()) {
+            head = tail = newNode;
         } else {
-            newNode.next = head;
-            head = newNode;
+            tail.next = newNode;
+            newNode.prev = tail;
+            tail = newNode;
         }
         size++;
     }
-    
-    public boolean remove(int index){
-        boolean removed = false;
-        if(index >= size){
-            System.out.println("No se puede eliminar. Indice mayor o igual que el tamaño");
-        } else {
-            Nodo<T> node = head;
-            for(int x=0; x <= index; x++){
-                node = node.next;
-            }
-            
-            if (node == head){
-                head = head.next;
-                removed = true;
-            } else {
-                node.prev.next = node.next;
-                removed = true;
-            }
+
+    @Override
+    public T pop() {
+        if (isEmpty()) {
+            return null;
         }
-        
-        if (removed) size--;
-        return removed;
+
+        T value = tail.value;
+
+        if (head == tail) {          // Solo un elemento
+            head = tail = null;
+        } else {
+            tail = tail.prev;
+            tail.next = null;
+        }
+        size--;
+        return value;
     }
-    
+
+    @Override
+    public void remove(int index) {
+        checkIndex(index);
+
+        Nodo<T> node = nodeAt(index);
+
+        if (node == head) {             // Si el nodo es el primer elemento
+            head = head.next;
+            if (head != null) head.prev = null;
+        } else if (node == tail) {      // Si el nodo es el ultimo elemento
+            tail = tail.prev;
+            tail.next = null;
+        } else {
+            node.prev.next = node.next;
+            node.next.prev = node.prev;
+        }
+        size--;
+    }
+
+    @Override
     public boolean isEmpty(){
         return size == 0;
     }
+
+    @Override
+    public T get(int index) {
+        checkIndex(index);
+        return nodeAt(index).value;
+    }
+
     public int find(T data){
         Nodo<T> node = head;
         int c=0;
@@ -69,5 +96,24 @@ public class ListaEnlazada<T> {
             return -1;
         }
         return c;
+    }
+    private Nodo<T> nodeAt(int index) {
+        if (index < (size >> 1)) {           // walk from head
+            Nodo<T> current = head;
+            for (int i = 0; i < index; i++) current = current.next;
+            return current;
+        } else {                             // walk from tail
+            Nodo<T> current = tail;
+            for (int i = size - 1; i > index; i--) current = current.prev;
+            return current;
+        }
+    }
+
+    /* Validate that index is within [0, size). */
+    private void checkIndex(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException(
+                    "Index: " + index + ", Size: " + size);
+        }
     }
 }
