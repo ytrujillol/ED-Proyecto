@@ -1,12 +1,12 @@
 import jsource.ListaEnlazada;
-class Tutores{
+class Tutor{
   //atributos
   private String documento;
   private String nombre;
   private String correoInstitucional;
   private ListaEnlazada<String> horariosDisponibles;
   private ListaEnlazada<String> asignaturasQueDicta;
-  public Tutores(String documento, String nombre, String correoInstitucional){
+  public Tutor(String documento, String nombre, String correoInstitucional){
     this.documento=documento;
     this.nombre=nombre;
     this.correoInstitucional=correoInstitucional;
