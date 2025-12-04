@@ -8,7 +8,10 @@ public interface LinkedList<T> {
     void insert(T value);
 
     // Eliminación sólo al final de la lista
-    T remove();
+    T pop();
+
+    // Eliminación por índice
+    void remove(int index);
 
     // Obtener elemento deseado dado un índice que marca la posición
     T get(int index);
