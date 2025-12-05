@@ -80,12 +80,4 @@ public class GestorTutorias implements ControladorEstudiante {
         // 3. Mostrar las tutorías realizadas (asignatura, tutor, fecha, etc.).
         // 4. Preguntar si desea regresar al menú principal y hacerlo.
     }
-
-    // Métodos auxiliares (a definir en futuras iteraciones), por ejemplo:
-    //
-    // private String leerOpcionMenu() { ... }
-    // private String leerAsignatura() { ... }
-    // private int leerPrioridad() { ... }
-    // private void mostrarMensaje(String mensaje) { ... }
-    // etc.
 }
