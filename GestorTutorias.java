@@ -11,7 +11,7 @@ public class GestorTutorias implements ControladorEstudiante {
     private HashMap<String, Estudiante> estudiantes; // clave: idEstudiante
     private HashMap<String, ListaEnlazada<Tutoria>> tutoriasPorEstudiante; // clave: idEstudiante
     private HashMap<String, MaxHeap<Tutoria>> tutoriasPendientesPorTutor; // clave: idTutor
-    private ListaEnlazada<Tutoria> historicoTutorias; // historial general o por estudiante
+    private HashMap<String, ListaEnlazada<Tutoria>> historicoTutorias; // clave: idEstudiante historial general o por estudiante
     private HashMap<String, Tutor[]> tutoresPorAsignatura; // clave: asignatura
 
     // Constructor. En una siguiente iteración se pueden recibir estas estructuras por parámetros.
@@ -19,7 +19,7 @@ public class GestorTutorias implements ControladorEstudiante {
             HashMap<String, Estudiante> estudiantes,
             HashMap<String, ListaEnlazada<Tutoria>> tutoriasPorEstudiante,
             HashMap<String, MaxHeap<Tutoria>> tutoriasPendientesPorTutor,
-            ListaEnlazada<Tutoria> historicoTutorias,
+            HashMap<String, ListaEnlazada<Tutoria>> historicoTutorias,
             HashMap<String, Tutor[]> tutoresPorAsignatura
             ) {
         // TODO: inicializar estructuras o recibirlas por parámetros.
