@@ -44,6 +44,11 @@ public class GestorTutorias implements ControladorEstudiante {
         // Se añade la tutoría a la lista de tutorías asignada al estudiante.
         tutoriasPorEstudiante.get(idEstudiante).insert(newtutoria);
 
+        // Se agrega la tutoría al montículo de tutorias del tutor, segun prioridad
+        tutoriasPendientesPorTutor.get(idTutor).insert(newtutoria);
+
+        // Se añade la tutoría al histórico de tutorías.
+        historicoTutorias.insert(newtutoria);
 
     }
 
