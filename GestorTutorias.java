@@ -36,7 +36,10 @@ public class GestorTutorias implements ControladorEstudiante {
     }
 
     @Override
-    public void solicitarTutoria(String idTutor, String idEstudiante, int prioridad) {
+    public void solicitarTutoria(String idTutor, String idEstudiante, String asignatura, String horario, int prioridad) {
+
+        // Se crea la nueva tutoria
+        Tutoria newtutoria = new Tutoria(idEstudiante, idTutor, asignatura, horario, prioridad);
 
         // Se relaciona al estudiante con el monticulo de las tutorias del tutor, segun la prioridad.
 
