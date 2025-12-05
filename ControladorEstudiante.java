@@ -8,7 +8,6 @@ public interface ControladorEstudiante {
      * Muestra el menú principal del estudiante y
      * dirige a la opción seleccionada.
      */
-    void mostrarMenuEstudiante();
 
     /**
      * Flujo completo para solicitar una tutoría:
