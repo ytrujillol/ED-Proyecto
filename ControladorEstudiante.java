@@ -27,4 +27,13 @@ public interface ControladorEstudiante {
      * - Mostrar tutorías realizadas y su información básica.
      */
     void verHistorial(String idEstudiante);
+
+
+    /**
+     * Flujo para dar por finalizada una tutoría.
+     * - Se extraerá del montículo
+     * - Se agrega al histórico de tutorías
+     * - Se elimina de las tutorías pendientes del estudiante.
+     */
+    void finalizar(String idEstudiante, Tutoria tutoria);
 }
