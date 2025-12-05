@@ -10,7 +10,7 @@ public interface ControladorEstudiante {
      * - Elegir prioridad.
      * - Confirmar y registrar la tutoría.
      */
-    void solicitarTutoria();
+    void solicitarTutoria(Tutor tutor, Estudiante estudiante);
 
     /**
      * Flujo para cancelar una tutoría:
