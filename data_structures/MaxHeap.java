@@ -26,8 +26,6 @@ public interface MaxHeap<T extends Comparable<T>> {
      * Se ubican en la altura correcta luego de insertarse en la hoja
      * Según prioridad
      */
-    void siftDown(T element);
-    void siftUp(T element);
 
     // Comprobaciones del tamaño del montículo
     boolean isEmpty();
