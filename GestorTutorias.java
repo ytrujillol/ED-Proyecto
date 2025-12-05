@@ -21,25 +21,12 @@ public class GestorTutorias implements ControladorEstudiante {
     }
 
     @Override
-    public void solicitarTutoria() {
-        // TODO:
-        // 1. Permitir al estudiante elegir la asignatura.
-        // 2. Usar tutoresPorAsignatura para obtener tutores de esa asignatura.
-        //    - Si no hay tutores disponibles, mostrar mensaje y volver al menú.
-        //
-        // 3. Construir la lista de horarios disponibles.
-        //    - Si no hay horarios disponibles, mostrar mensaje y volver al menú.
-        //
-        // 4. Pedir al estudiante una prioridad entre 1 y 5.
-        // 5. Crear el objeto modules.Tutoria correspondiente.
-        // 6. Insertar la tutoría en:
-        //    - tutoriasPendientesPorTutor (MaxHeap<modules.Tutoria> asociado al tutor).
-        //    - tutoriasPorEstudiante (LinkedList<modules.Tutoria> asociada al estudiante).
-        // 7. Mostrar mensaje de confirmación y volver al menú.
+    public void solicitarTutoria(Tutor tutor, Estudiante estudiante) {
+
     }
 
     @Override
-    public void cancelarTutoria() {
+    public void cancelarTutoria(Estudiante estudiante, Tutoria  tutoria) {
         // TODO:
         // 1. Obtener la lista de tutorías vigentes del estudiante
         //    desde tutoriasPorEstudiante.
@@ -58,7 +45,7 @@ public class GestorTutorias implements ControladorEstudiante {
     }
 
     @Override
-    public void verHistorial() {
+    public void verHistorial(Estudiante estudiante) {
         // TODO:
         // 1. Obtener el historial de tutorías del estudiante
         //    (desde historicoTutorias o una estructura similar).
