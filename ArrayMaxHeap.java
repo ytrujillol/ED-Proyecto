@@ -88,7 +88,7 @@ public class ArrayMaxHeap implements MaxHeap<Tutoria>{
     private void changePriority(int i, int nuevaPrioridad) {
     
         int viejaPrioridad = heap.get(i).getPrioridad();
-        heap.get(i).setPrioridad(nuevaPrioridad)
+        heap.get(i).setPrioridad(nuevaPrioridad);
         if (nuevaPrioridad > viejaPrioridad) {
             siftUp(i);
         }

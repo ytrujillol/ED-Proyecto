@@ -1,6 +1,6 @@
 import java.time.LocalDate;
 
-class Tutoria() implements Comparable<Tutoria>{
+class Tutoria implements Comparable<Tutoria>{
     private int idTutoria = 0;
     
     private String asignatura, horario;
@@ -19,10 +19,6 @@ class Tutoria() implements Comparable<Tutoria>{
         this.fecha = fecha;
     }
     
-    public int compareTo (Tutoria otra){ //Compara las tutorías por prioridad asignada
-        return Integer.compare(this.prioridad, otra.prioridad);
-    }
-    
     //---------------getters---------------------------
     public String getAsignatura(){
         return asignatura;
@@ -39,18 +35,43 @@ class Tutoria() implements Comparable<Tutoria>{
     public int getIdEstudiante(){
         return idEstudiante;
     }
-    public getIdTutor(){
+    public int getIdTutor(){
         return idTutor;
+    }
+    public int getPrioridad(){
+        return prioridad;
     }
     public LocalDate getFecha(){
         return fecha;
     }
-    //-----------setters-------------------------------
-    // public void setPrioridad(int prioridad){    Por implementar
-    //      this.prioridad = prioridad;
-    // }
-    public void setEstado(String estado){
-        this.estado = estado
+    //---------------setters---------------------------
+    public void setAsignatura(String asignatura) {
+        this.asignatura = asignatura;
+    }
+    public void setHorario(String horario) {
+        this.horario = horario;
+    }
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+    public void setIdTutoria(int idTutoria) {
+        this.idTutoria = idTutoria;
+    }
+    public void setIdEstudiante(int idEstudiante) {
+        this.idEstudiante = idEstudiante;
+    }
+    public void setIdTutor(int idTutor) {
+        this.idTutor = idTutor;
+    }
+    public void setPrioridad(int prioridad) {
+        this.prioridad = prioridad;
+    }
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
+    }
+
+    public int compareTo (Tutoria otra){ //Compara las tutorías por prioridad asignada
+        return Integer.compare(this.prioridad, otra.prioridad);
     }
     
 }
