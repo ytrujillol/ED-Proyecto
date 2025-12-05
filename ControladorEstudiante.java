@@ -1,3 +1,4 @@
+import modules.*;
 // Interfaz para la lógica de la vista del estudiante.
 // Se encarga de orquestar las opciones: solicitar tutoría,
 // cancelar tutoría y ver historial, según el diagrama de flujo.
