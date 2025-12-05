@@ -80,4 +80,9 @@ public class GestorTutorias implements ControladorEstudiante {
         // 3. Mostrar las tutorías realizadas (asignatura, tutor, fecha, etc.).
         // 4. Preguntar si desea regresar al menú principal y hacerlo.
     }
+
+    @Override
+    public void finalizar(String idEstudiante, Tutoria tutoria) {
+        
+    }
 }
