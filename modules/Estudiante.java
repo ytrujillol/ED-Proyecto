@@ -1,6 +1,6 @@
 package modules;
 
-class Estudiante {
+public class Estudiante {
     private String documento;
     private String nombre;
     private String correoInstitucional;

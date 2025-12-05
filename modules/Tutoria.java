@@ -2,7 +2,7 @@ package modules;
 
 import java.time.LocalDate;
 
-class Tutoria implements Comparable<Tutoria>{
+public class Tutoria implements Comparable<Tutoria>{
     private int idTutoria = 0;
     
     private String asignatura, horario;
