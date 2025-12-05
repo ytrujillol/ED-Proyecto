@@ -13,6 +13,9 @@ public interface LinkedList<T> {
     // Eliminación por índice
     void remove(int index);
 
+    // Eliminación de objeto
+    void delete(T item);
+
     // Obtener elemento deseado dado un índice que marca la posición
     T get(int index);
 
