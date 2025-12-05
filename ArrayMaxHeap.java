@@ -97,7 +97,7 @@ public class ArrayMaxHeap implements MaxHeap<Tutoria>{
         }
     }
     
-    public T peek(){
+    public Tutoria peek(){
         if (isEmpty()){
             return null;
         }
