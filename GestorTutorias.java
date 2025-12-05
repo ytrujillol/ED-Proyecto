@@ -83,13 +83,15 @@ public class GestorTutorias implements ControladorEstudiante {
     }
 
     @Override
-    public void finalizar(Tutoria tutoria) {
+    public void finalizar(String idTutor) {
+        // Eliminamos la tutoría del montículo de tutorías.
+        if (!tutoriasPendientesPorTutor.find(idTutor)) return;
+
+        Tutoria tutoria = tutoriasPendientesPorTutor.get(idTutor).extractMax();
+
         // Obtenemos informacion de la tutoria: idEstudiante e idTutor
         String idEstudiante = tutoria.getIdEstudiante();
         String idTutor = tutoria.getIdTutor();
-
-        // Eliminamos la tutoría del montículo de tutorías.
-        if (tutoriasPendientesPorTutor.find(idTutor)) tutoriasPendientesPorTutor.get(idTutor).extractMax();
 
         // Eliminamos la tutoría en las tutorias pendientes del estudiante
         if (tutoriasPorEstudiante.find(idEstudiante)) tutoriasPorEstudiante.get(idEstudiante).delete(tutoria);
