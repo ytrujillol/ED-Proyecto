@@ -8,11 +8,11 @@ public class GestorTutorias implements ControladorEstudiante {
 
     // Estructuras principales que usa el controlador.
     // Se asume que estas estructuras son provistas por otras partes del sistema.
-    private HashMap<String, Estudiante> estudiantes; // clave: idEstudiante
-    private HashMap<String, ListaEnlazada<Tutoria>> tutoriasPorEstudiante; // clave: idEstudiante
-    private HashMap<String, MaxHeap<Tutoria>> tutoriasPendientesPorTutor; // clave: idTutor
-    private HashMap<String, ListaEnlazada<Tutoria>> historicoTutorias; // clave: idEstudiante historial general o por estudiante
-    private HashMap<String, Tutor[]> tutoresPorAsignatura; // clave: asignatura
+    private final HashMap<String, Estudiante> estudiantes; // clave: idEstudiante
+    private final HashMap<String, ListaEnlazada<Tutoria>> tutoriasPorEstudiante; // clave: idEstudiante
+    private final HashMap<String, MaxHeap<Tutoria>> tutoriasPendientesPorTutor; // clave: idTutor
+    private final HashMap<String, ListaEnlazada<Tutoria>> historicoTutorias; // clave: idEstudiante historial general o por estudiante
+    private final HashMap<String, Tutor[]> tutoresPorAsignatura; // clave: asignatura
 
     // Constructor. En una siguiente iteración se pueden recibir estas estructuras por parámetros.
     public GestorTutorias(
