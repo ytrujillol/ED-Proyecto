@@ -70,7 +70,14 @@ public class GestorTutorias implements ControladorEstudiante {
     }
 
     @Override
-    public void finalizar(String idEstudiante, Tutoria tutoria) {
-        
+    public void finalizar(String idEstudiante, String idTutor, Tutoria tutoria) {
+        // Eliminamos la tutoría del montículo de tutorías.
+        tutoriasPendientesPorTutor.get(idTutor);
+
+        // Eliminamos la tutoría en las tutorias pendientes del estudiante
+        tutoriasPorEstudiante.get(idEstudiante);
+
+        // Se añade la tutoría al histórico de tutorías.
+        historicoTutorias.get(idEstudiante).insert(tutoria);
     }
 }
