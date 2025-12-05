@@ -15,6 +15,10 @@ public interface MaxHeap<T extends Comparable<T>> {
      */
     T extractMax();
 
+    void siftUp(int i);
+
+    void siftDown(int i);
+
     // Obtener el elemento de mayor prioridad sin eliminarlo del Heap
     T peekMax();
 

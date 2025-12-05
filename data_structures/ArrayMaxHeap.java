@@ -1,4 +1,5 @@
 package data_structures;
+import java.util.ArrayList;
 
 public class ArrayMaxHeap<T extends Comparable<T>> implements MaxHeap<T>{
     private ArrayList<T> heap;
@@ -28,7 +29,7 @@ public class ArrayMaxHeap<T extends Comparable<T>> implements MaxHeap<T>{
         }
         return max;
     }
-    
+
     @Override
     public boolean isEmpty(){
         return heap.isEmpty();
@@ -48,14 +49,15 @@ public class ArrayMaxHeap<T extends Comparable<T>> implements MaxHeap<T>{
     private int getRightChild(int i){
         return 2*i+2;
     }
-    
+
     private void swap(int i, int j){
         T temp = heap.get(i);
         heap.set(i, heap.get(j));
         heap.set(j,temp);
     }
-    
-    private void siftUp(int i){
+
+    @Override
+    public void siftUp(int i){
         while(i>0){
             int parent = getParent(i);
             if (heap.get(i).compareTo(heap.get(parent)) <= 0){
@@ -65,8 +67,9 @@ public class ArrayMaxHeap<T extends Comparable<T>> implements MaxHeap<T>{
             i = parent;
         }
     }
-    
-    private void siftDown(int i){
+
+    @Override
+    public void siftDown(int i){
         int left = getLeftChild(i);
         int right = getRightChild(i);
         int maxIndex = i;
@@ -88,13 +91,13 @@ public class ArrayMaxHeap<T extends Comparable<T>> implements MaxHeap<T>{
     private void changePriority(int i, T newPriority){
         //Por implementar
     }
-    
-    public T peek(){
+
+    @Override
+    public T peekMax(){
         if (isEmpty()){
             return null;
         }
         return heap.get(0);
     }
-    
-    
+
 }
