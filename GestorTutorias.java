@@ -42,15 +42,25 @@ public class GestorTutorias implements ControladorEstudiante {
         Tutoria newtutoria = new Tutoria(idEstudiante, idTutor, asignatura, horario, prioridad);
 
         // Se añade la tutoría a la lista de tutorías asignada al estudiante.
+        // Se comprueba si ya existe la clave del estudiante en las tutorías
+        // Si no es así, se crea la nueva clave con una nueva lista.
+        if (!tutoriasPorEstudiante.find(idEstudiante)) {
+            tutoriasPorEstudiante.put(idEstudiante, new ListaEnlazada<>());
+        }
         tutoriasPorEstudiante.get(idEstudiante).insert(newtutoria);
 
         // Se agrega la tutoría al montículo de tutorias del tutor, segun prioridad
+        // De igual manera, se crea nuevo el monticulo si no está
+        // Se añade la tutoria al monticulo ya existente.
+        if (!tutoriasPendientesPorTutor.find(idTutor)) {
+            tutoriasPendientesPorTutor.put(idTutor, new ArrayMaxHeap<>());
+        }
         tutoriasPendientesPorTutor.get(idTutor).insert(newtutoria);
     }
 
     @Override
     public void cancelarTutoria(String idEstudiante, Tutoria tutoria) {
-
+        return;
 
     }
 
@@ -72,12 +82,12 @@ public class GestorTutorias implements ControladorEstudiante {
     @Override
     public void finalizar(String idEstudiante, String idTutor, Tutoria tutoria) {
         // Eliminamos la tutoría del montículo de tutorías.
-        tutoriasPendientesPorTutor.get(idTutor);
+        if (tutoriasPendientesPorTutor.find(idTutor)) tutoriasPendientesPorTutor.get(idTutor);
 
         // Eliminamos la tutoría en las tutorias pendientes del estudiante
-        tutoriasPorEstudiante.get(idEstudiante);
+        if (tutoriasPorEstudiante.find(idEstudiante)) tutoriasPorEstudiante.get(idEstudiante);
 
         // Se añade la tutoría al histórico de tutorías.
-        historicoTutorias.get(idEstudiante).insert(tutoria);
+        if (historicoTutorias.find(idEstudiante)) historicoTutorias.get(idEstudiante).insert(tutoria);
     }
 }

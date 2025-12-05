@@ -1,3 +1,4 @@
+import data_structures.ListaEnlazada;
 import modules.*;
 
 // Interfaz para la lógica de la vista del estudiante.
