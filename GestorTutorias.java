@@ -55,13 +55,18 @@ public class GestorTutorias implements ControladorEstudiante {
     }
 
     @Override
-    public void verHistorial(String idEstudiante) {
-        // TODO:
-        // 1. Obtener el historial de tutorías del estudiante
-        //    (desde historicoTutorias o una estructura similar).
-        // 2. Si el historial está vacío, mostrar mensaje y volver al menú.
-        // 3. Mostrar las tutorías realizadas (asignatura, tutor, fecha, etc.).
-        // 4. Preguntar si desea regresar al menú principal y hacerlo.
+    public ListaEnlazada<Tutoria> verHistorial(String idEstudiante) {
+        // Se comprueba si tenemos la clave o no.
+        if (!historicoTutorias.find(idEstudiante)) return null;
+
+        // se retorna la lista de tutorías pasadas.
+        ListaEnlazada<Tutoria> tutorias;
+
+        // Se busca y guarda la lista de tutorías completadas del estudiante
+        tutorias = historicoTutorias.get(idEstudiante);
+
+        // se retorna la lista obtenida; será manejada por la interfaz a la hora de mostrar.
+        return tutorias;
     }
 
     @Override
