@@ -4,12 +4,6 @@
 public interface ControladorEstudiante {
 
     /**
-     * Punto de entrada para la vista del estudiante.
-     * Muestra el menú principal del estudiante y
-     * dirige a la opción seleccionada.
-     */
-
-    /**
      * Flujo completo para solicitar una tutoría:
      * - Seleccionar asignatura.
      * - Buscar tutores y horarios disponibles.
