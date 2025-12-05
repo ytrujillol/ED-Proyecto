@@ -8,12 +8,12 @@ package data_structures;
  *
  * @author adria_6
  */
-public class LinkedList<T> implements LList<T> {
+public class ListaEnlazada<T> implements LList<T> {
     private Nodo<T> head;
     private Nodo<T> tail;
     private int size;
 
-    public LinkedList() {
+    public ListaEnlazada() {
         head = tail = null;
         size = 0;
     }
