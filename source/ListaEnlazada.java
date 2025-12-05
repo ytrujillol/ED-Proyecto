@@ -75,6 +75,38 @@ public class ListaEnlazada<T> implements LinkedList<T> {
     }
 
     @Override
+    public void delete(T item) {
+        if (isEmpty()) {
+            return;
+        }
+
+        // Busca la primera occurrencia, si item es null, busca la primera ocurrencia con valor null
+        Nodo<T> current = head;
+        while (current != null &&
+                !(item == null ? current.value == null : item.equals(current.value))) {
+            current = current.next;
+        }
+
+        if (current == null) {             // no se encuentra el item
+            return;
+        }
+
+        /* Eliminar ------------------------------------------------------------ */
+        if (current == head) {             // el item está en el primer nodo
+            head = head.next;
+            if (head != null) head.prev = null;
+            if (current == tail) tail = head; // Si la lista solo tiene un elemento
+        } else if (current == tail) {      // el item está en el ultimo nodo
+            tail = tail.prev;
+            tail.next = null;
+        } else {                           // el item está en un nodo del medio
+            current.prev.next = current.next;
+            current.next.prev = current.prev;
+        }
+        size--;
+    }
+
+    @Override
     public boolean isEmpty(){
         return size == 0;
     }
