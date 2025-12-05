@@ -50,21 +50,8 @@ public class GestorTutorias implements ControladorEstudiante {
 
     @Override
     public void cancelarTutoria(String idEstudiante, Tutoria tutoria) {
-        // TODO:
-        // 1. Obtener la lista de tutorías vigentes del estudiante
-        //    desde tutoriasPorEstudiante.
-        // 2. Si la lista está vacía, mostrar "No hay tutorías agendadas"
-        //    y volver al menú.
-        //
-        // 3. Mostrar las tutorías vigentes en pantalla.
-        // 4. Permitir seleccionar una tutoría a cancelar.
-        // 5. Mostrar mensaje de advertencia / confirmación.
-        // 6. Si se confirma la cancelación:
-        //    - Eliminar la tutoría de tutoriasPendientesPorTutor.
-        //    - Eliminarla de tutoriasPorEstudiante.
-        //    - (Opcional) registrar la cancelación en historicoTutorias si así se define.
-        //    - Mostrar mensaje de confirmación.
-        // 7. Volver al menú.
+
+
     }
 
     @Override
