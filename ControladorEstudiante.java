@@ -1,4 +1,5 @@
 import modules.*;
+
 // Interfaz para la lógica de la vista del estudiante.
 // Se encarga de orquestar las opciones: solicitar tutoría,
 // cancelar tutoría y ver historial, según el diagrama de flujo.
@@ -11,7 +12,7 @@ public interface ControladorEstudiante {
      * - Elegir prioridad.
      * - Confirmar y registrar la tutoría.
      */
-    void solicitarTutoria(String idTutor, String idEstudiante, int prioridad);
+    void solicitarTutoria(String idTutor, String idEstudiante, String asignatura, String horario, int prioridad);
 
     /**
      * Flujo para cancelar una tutoría:
