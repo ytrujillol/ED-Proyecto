@@ -97,7 +97,7 @@ public class ArrayMaxHeap implements MaxHeap<Tutoria>{
         }
     }
     
-    public T peek(){
+    public Tutoria peek(){
         if (isEmpty()){
             return null;
         }
@@ -115,7 +115,6 @@ public class ArrayMaxHeap implements MaxHeap<Tutoria>{
                 break;
             }
         }
-        if (eliminado != null) return true;
-        return false;
+        return eliminado != null;
     }    
 }
