@@ -41,7 +41,8 @@ public class GestorTutorias implements ControladorEstudiante {
         // Se crea la nueva tutoria
         Tutoria newtutoria = new Tutoria(idEstudiante, idTutor, asignatura, horario, prioridad);
 
-        // Se relaciona al estudiante con el monticulo de las tutorias del tutor, segun la prioridad.
+        // Se añade la tutoría a la lista de tutorías asignada al estudiante.
+        tutoriasPorEstudiante.get(idEstudiante).insert(newtutoria);
 
 
     }
