@@ -27,7 +27,7 @@ public interface ControladorEstudiante {
      * - Mostrar tutorías realizadas y su información básica.
      */
     ListaEnlazada<Tutoria> verHistorial(String idEstudiante);
-    
+
 
     /**
      * Flujo para dar por finalizada una tutoría.
