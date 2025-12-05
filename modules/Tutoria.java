@@ -11,14 +11,14 @@ public class Tutoria implements Comparable<Tutoria>{
     private String estado;
     private LocalDate fecha;
     
-    public Tutoria(int idEstudiante, int idTutor, String asignatura, String horario, int prioridad, LocalDate fecha){
+    public Tutoria(int idEstudiante, int idTutor, String asignatura, String horario, int prioridad){
         this.idTutoria++; //La primera tutoría inicia con ID 1 y va aumentando
         this.idEstudiante = idEstudiante;
         this.idTutor = idTutor;
         this.asignatura = asignatura;
         this.horario = horario;
         this.prioridad = prioridad;
-        this.fecha = fecha;
+        this.fecha = LocalDate.now();
     }
     
     public int compareTo (Tutoria otra){ //Compara las tutorías por prioridad asignada
