@@ -36,5 +36,5 @@ public interface ControladorEstudiante {
      * - Se agrega al histórico de tutorías
      * - Se elimina de las tutorías pendientes del estudiante.
      */
-    void finalizar(Tutoria tutoria);
+    void finalizar(String idTutor);
 }
