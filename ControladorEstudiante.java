@@ -11,7 +11,7 @@ public interface ControladorEstudiante {
      * - Elegir prioridad.
      * - Confirmar y registrar la tutoría.
      */
-    void solicitarTutoria(Tutor tutor, Estudiante estudiante);
+    void solicitarTutoria(String idTutor, String idEstudiante);
 
     /**
      * Flujo para cancelar una tutoría:
@@ -19,11 +19,11 @@ public interface ControladorEstudiante {
      * - Seleccionar tutoría a cancelar.
      * - Confirmar cancelación.
      */
-    void cancelarTutoria(Estudiante estudiante, Tutoria tutoria);
+    void cancelarTutoria(String idEstudiante, Tutoria tutoria);
 
     /**
      * Flujo para consultar el historial de tutorías del estudiante:
      * - Mostrar tutorías realizadas y su información básica.
      */
-    void verHistorial(Estudiante estudiante);
+    void verHistorial(String idEstudiante);
 }
