@@ -59,8 +59,14 @@ public class GestorTutorias implements ControladorEstudiante {
     }
 
     @Override
-    public void cancelarTutoria(String idEstudiante, Tutoria tutoria) {
-        return;
+    public void cancelarTutoria(Tutoria tutoria) {
+        // Obtenemos la información de la tutoría
+        String idEstudiante =  tutoria.getIdEstudiante();
+
+        // Eliminamos la tutoría de la lista de tutorias del estudiante
+        if (tutoriasPorEstudiante.find(idEstudiante)) tutoriasPorEstudiante.get(idEstudiante).delete(tutoria);
+
+        // Eliminamos la tutoria del monticulo de tutorias del tutor
 
     }
 
@@ -80,12 +86,16 @@ public class GestorTutorias implements ControladorEstudiante {
     }
 
     @Override
-    public void finalizar(String idEstudiante, String idTutor, Tutoria tutoria) {
+    public void finalizar(Tutoria tutoria) {
+        // Obtenemos informacion de la tutoria: idEstudiante e idTutor
+        String idEstudiante = tutoria.getIdEstudiante();
+        String idTutor = tutoria.getIdTutor();
+
         // Eliminamos la tutoría del montículo de tutorías.
-        if (tutoriasPendientesPorTutor.find(idTutor)) tutoriasPendientesPorTutor.get(idTutor);
+        if (tutoriasPendientesPorTutor.find(idTutor)) tutoriasPendientesPorTutor.get(idTutor).extractMax();
 
         // Eliminamos la tutoría en las tutorias pendientes del estudiante
-        if (tutoriasPorEstudiante.find(idEstudiante)) tutoriasPorEstudiante.get(idEstudiante);
+        if (tutoriasPorEstudiante.find(idEstudiante)) tutoriasPorEstudiante.get(idEstudiante).delete(tutoria);
 
         // Se añade la tutoría al histórico de tutorías.
         if (historicoTutorias.find(idEstudiante)) historicoTutorias.get(idEstudiante).insert(tutoria);
