@@ -24,5 +24,5 @@ public interface ControladorEstudiante {
      * Flujo para consultar el historial de tutorías del estudiante:
      * - Mostrar tutorías realizadas y su información básica.
      */
-    void verHistorial();
+    void verHistorial(Estudiante estudiante);
 }
