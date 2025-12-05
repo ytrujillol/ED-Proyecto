@@ -22,11 +22,6 @@ public class GestorTutorias implements ControladorEstudiante {
             HashMap<String, ListaEnlazada<Tutoria>> historicoTutorias,
             HashMap<String, Tutor[]> tutoresPorAsignatura
             ) {
-        // TODO: inicializar estructuras o recibirlas por parámetros.
-        /**
-         * Inicializacion de estructuras previamente definidas
-         * dadas a través de los parámetros
-         */
 
         this.estudiantes = estudiantes;
         this.tutoriasPorEstudiante = tutoriasPorEstudiante;
