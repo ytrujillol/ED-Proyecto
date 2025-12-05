@@ -91,7 +91,6 @@ public class GestorTutorias implements ControladorEstudiante {
 
         // Obtenemos informacion de la tutoria: idEstudiante e idTutor
         String idEstudiante = tutoria.getIdEstudiante();
-        String idTutor = tutoria.getIdTutor();
 
         // Eliminamos la tutoría en las tutorias pendientes del estudiante
         if (tutoriasPorEstudiante.find(idEstudiante)) tutoriasPorEstudiante.get(idEstudiante).delete(tutoria);
