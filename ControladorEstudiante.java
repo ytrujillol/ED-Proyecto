@@ -18,7 +18,7 @@ public interface ControladorEstudiante {
      * - Seleccionar tutoría a cancelar.
      * - Confirmar cancelación.
      */
-    void cancelarTutoria(Estudiante estudiante, Tutor tutoria);
+    void cancelarTutoria(Estudiante estudiante, Tutoria tutoria);
 
     /**
      * Flujo para consultar el historial de tutorías del estudiante:
