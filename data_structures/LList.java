@@ -1,8 +1,8 @@
-package source;
+package data_structures;
 
 // Interfaz de Lista Enlazada
 // Uso de objetos genéricos para manejar los distintos tipos de objetos
-public interface LinkedList<T> {
+public interface LList<T> {
 
     // Lista enlazada simple con adición de datos al final
     void insert(T value);

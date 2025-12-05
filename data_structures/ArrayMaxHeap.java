@@ -1,3 +1,5 @@
+package data_structures;
+
 public class ArrayMaxHeap<T extends Comparable<T>> implements MaxHeap<T>{
     private ArrayList<T> heap;
     

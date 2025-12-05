@@ -1,6 +1,8 @@
+package modules;
+
 import java.time.LocalDate;
 
-class Tutoria() implements Comparable<Tutoria>{
+class Tutoria implements Comparable<Tutoria>{
     private int idTutoria = 0;
     
     private String asignatura, horario;
@@ -39,7 +41,7 @@ class Tutoria() implements Comparable<Tutoria>{
     public int getIdEstudiante(){
         return idEstudiante;
     }
-    public getIdTutor(){
+    public int getIdTutor(){
         return idTutor;
     }
     public LocalDate getFecha(){
@@ -50,7 +52,7 @@ class Tutoria() implements Comparable<Tutoria>{
     //      this.prioridad = prioridad;
     // }
     public void setEstado(String estado){
-        this.estado = estado
+        this.estado = estado;
     }
     
 }

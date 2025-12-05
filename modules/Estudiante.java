@@ -1,4 +1,6 @@
-class Estudiante(){
+package modules;
+
+class Estudiante {
     private String documento;
     private String nombre;
     private String correoInstitucional;
