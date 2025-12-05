@@ -6,12 +6,12 @@ public class Tutoria implements Comparable<Tutoria>{
     private int idTutoria = 0;
     
     private String asignatura, horario;
-    private int idEstudiante, idTutor;
+    private String idEstudiante, idTutor;
     private int prioridad;
     private String estado;
     private LocalDate fecha;
     
-    public Tutoria(int idEstudiante, int idTutor, String asignatura, String horario, int prioridad){
+    public Tutoria(String idEstudiante, String idTutor, String asignatura, String horario, int prioridad){
         this.idTutoria++; //La primera tutoría inicia con ID 1 y va aumentando
         this.idEstudiante = idEstudiante;
         this.idTutor = idTutor;
@@ -38,10 +38,10 @@ public class Tutoria implements Comparable<Tutoria>{
     public int getIdTutoria(){
         return idTutoria;
     }
-    public int getIdEstudiante(){
+    public String getIdEstudiante(){
         return idEstudiante;
     }
-    public int getIdTutor(){
+    public String getIdTutor(){
         return idTutor;
     }
     public LocalDate getFecha(){
