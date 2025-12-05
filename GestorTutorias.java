@@ -62,6 +62,8 @@ public class GestorTutorias implements ControladorEstudiante {
         if (tutoriasPorEstudiante.find(idEstudiante)) tutoriasPorEstudiante.get(idEstudiante).delete(tutoria);
 
         // Eliminamos la tutoria del monticulo de tutorias del tutor
+        /* pendiente */
+
 
     }
 
