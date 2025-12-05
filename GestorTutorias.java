@@ -36,12 +36,14 @@ public class GestorTutorias implements ControladorEstudiante {
     }
 
     @Override
-    public void solicitarTutoria(Tutor tutor, Estudiante estudiante) {
+    public void solicitarTutoria(String idTutor, String idEstudiante) {
+
+        // Se
 
     }
 
     @Override
-    public void cancelarTutoria(Estudiante estudiante, Tutoria  tutoria) {
+    public void cancelarTutoria(String idEstudiante, Tutoria tutoria) {
         // TODO:
         // 1. Obtener la lista de tutorías vigentes del estudiante
         //    desde tutoriasPorEstudiante.
@@ -60,7 +62,7 @@ public class GestorTutorias implements ControladorEstudiante {
     }
 
     @Override
-    public void verHistorial(Estudiante estudiante) {
+    public void verHistorial(String idEstudiante) {
         // TODO:
         // 1. Obtener el historial de tutorías del estudiante
         //    (desde historicoTutorias o una estructura similar).
