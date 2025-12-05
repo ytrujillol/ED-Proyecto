@@ -6,7 +6,7 @@ public class Tutoria implements Comparable<Tutoria>{
     private int idTutoria = 0;
     
     private String asignatura, horario;
-    private String idEstudiante, idTutor;
+    private final String idEstudiante, idTutor;
     private int prioridad;
     private String estado;
     private LocalDate fecha;
