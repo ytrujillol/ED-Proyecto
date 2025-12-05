@@ -115,7 +115,6 @@ public class ArrayMaxHeap implements MaxHeap<Tutoria>{
                 break;
             }
         }
-        if (eliminado != null) return true;
-        return false;
+        return eliminado != null;
     }    
 }
