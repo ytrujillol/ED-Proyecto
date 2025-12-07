@@ -4,7 +4,7 @@ class Tutoria implements Comparable<Tutoria>{
     private int idTutoria = 0;
     
     private String asignatura, horario;
-    private int idEstudiante, idTutor;
+    private String idEstudiante, idTutor;
     private int prioridad;
     private String estado;
     private LocalDate fecha;
@@ -32,10 +32,10 @@ class Tutoria implements Comparable<Tutoria>{
     public int getIdTutoria(){
         return idTutoria;
     }
-    public int getIdEstudiante(){
+    public String getIdEstudiante(){
         return idEstudiante;
     }
-    public int getIdTutor(){
+    public String getIdTutor(){
         return idTutor;
     }
     public int getPrioridad(){
@@ -57,10 +57,10 @@ class Tutoria implements Comparable<Tutoria>{
     public void setIdTutoria(int idTutoria) {
         this.idTutoria = idTutoria;
     }
-    public void setIdEstudiante(int idEstudiante) {
+    public void setIdEstudiante(String idEstudiante) {
         this.idEstudiante = idEstudiante;
     }
-    public void setIdTutor(int idTutor) {
+    public void setIdTutor(String idTutor) {
         this.idTutor = idTutor;
     }
     public void setPrioridad(int prioridad) {
