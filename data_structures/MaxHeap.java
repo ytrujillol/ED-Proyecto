@@ -30,4 +30,7 @@ public interface MaxHeap<T extends Comparable<T>> {
     // Comprobaciones del tamaño del montículo
     boolean isEmpty();
     int size();
+
+    // Permitirá eliminar una tutoria especifica
+    boolean remove(T tutoria);
 }
