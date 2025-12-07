@@ -149,21 +149,13 @@ public class Main {
             }
         }
 
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                Interfaz ventana = new Interfaz();
-                ventana.setVisible(true); // Hace visible la ventana
-            }
+        SwingUtilities.invokeLater(() -> {
+            Interfaz ventana = new Interfaz();
+            ventana.setVisible(true); // Hace visible la ventana
         });
-
-    }
-
-}
 
         // Se crea el objeto 'gestor', correspondiente al gestor de tutorías. Inicializado con estructuras ya definidas.
         GestorTutorias gestor = new GestorTutorias(estudiantesPorDocumento, tutoriasEstudiante, tutoriasPendientes, historicoEstudiante, tutoresPorAsignatura);
-
 
     }
 }
