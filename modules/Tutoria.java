@@ -2,11 +2,11 @@ package modules;
 
 import java.time.LocalDate;
 
-class Tutoria() implements Comparable<Tutoria>{
+public class Tutoria implements Comparable<Tutoria>{
     private int idTutoria = 0;
     
     private String asignatura, horario;
-    private int idEstudiante, idTutor;
+    private String idEstudiante, idTutor;
     private int prioridad;
     private String estado;
     private LocalDate fecha;
@@ -72,14 +72,7 @@ class Tutoria() implements Comparable<Tutoria>{
         this.fecha = fecha;
     }
 
-    public int compareTo (Tutoria otra){ //Compara las tutorías por prioridad asignada
+    public int compareTo (Tutoria otra) { //Compara las tutorías por prioridad asignada
         return Integer.compare(this.prioridad, otra.prioridad);
-    //-----------setters-------------------------------
-    // public void setPrioridad(int prioridad){    Por implementar
-    //      this.prioridad = prioridad;
-    // }
-    public void setEstado(String estado){
-        this.estado = estado;
     }
-    
 }
