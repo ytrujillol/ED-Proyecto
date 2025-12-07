@@ -105,7 +105,7 @@ public class Main {
             String id = t.getIdEstudiante();
             if ("Activa".equals(t.getEstado())){
                 if(!tutoriasEstudiante.find(id)){//Si aun no está ese estudiante en el mapa
-                    tutoriasEstudiante.put(id, new ListaEnlazada<Tutoria>());
+                    tutoriasEstudiante.put(id, new ListaEnlazada<>());
                 }
                 ListaEnlazada<Tutoria> l = tutoriasEstudiante.get(id);//Una vez puesto, agrega la tutoría activa a la lista
                 l.insert(t);
@@ -118,7 +118,7 @@ public class Main {
             String id = t.getIdEstudiante();
             if ("Finalizada".equals(t.getEstado())){
                 if(!historicoEstudiante.find(id)){//Si aun no está ese estudiante en el mapa
-                    historicoEstudiante.put(id, new ListaEnlazada<Tutoria>());
+                    historicoEstudiante.put(id, new ListaEnlazada<>());
                 }
                 ListaEnlazada<Tutoria> l = historicoEstudiante.get(id);//Una vez puesto, agrega la tutoría finalizada a la lista
                 l.insert(t);
