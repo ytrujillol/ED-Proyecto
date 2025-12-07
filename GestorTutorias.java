@@ -79,10 +79,8 @@ public class GestorTutorias implements ControladorEstudiante {
     @Override
     public ListaEnlazada<Tutoria> verHistorial(String idEstudiante) {
         // Se comprueba si tenemos la clave o no.
-        if (!historicoTutorias.find(idEstudiante)) return null;
-
         // Se comprueba si está vacía la lista de tutorias del estudiante.
-        if (historicoTutorias.get(idEstudiante).isEmpty()) return null;
+        if (!historicoTutorias.find(idEstudiante) || historicoTutorias.get(idEstudiante).isEmpty()) return null;
 
         // se retorna la lista de tutorías pasadas.
         ListaEnlazada<Tutoria> tutorias;
