@@ -1,6 +1,16 @@
 import java.time.LocalDate;
+import javax.swing.SwingUtilities;
 
 public class Main {
+    public void listarHorarios(){
+
+    }
+    public void listarTutprog(){
+
+    }
+    public void listarTutpasadas(){
+
+    }
     public static void main(String[] args) {
         // Instancia de 24 estudiantes         (documento,nombre,correo,semestre)
         Estudiante e1 = new Estudiante  ("1001022001", "Carlos Peréz","cperez@unal.edu.co", 2);
@@ -47,7 +57,14 @@ public class Main {
         Tutoria t8 = new Tutoria("1001022008", "1001022025", "Cálculo I", "9:00 am - 11:00 am", 3, LocalDate.of(2025,11,7));
         Tutoria t9 = new Tutoria("1001022009", "1001022026", "Cálculo I", "7:00 am - 9:00 am", 1, LocalDate.of(2025,11,13));
         Tutoria t10 = new Tutoria("1001022010", "1001022027", "Cálculo I", "11:00 am - 1:00 pm", 1, LocalDate.of(2025,10,24));
-        
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                Interfaz ventana = new Interfaz();
+                ventana.setVisible(true); // Hace visible la ventana
+            }
+        });
+
     }
-  
+
 }

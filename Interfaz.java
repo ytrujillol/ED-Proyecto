@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 
 public class Interfaz extends JFrame {
     // Declaración de los 4 botones
-    String[] materias = {"Seleccione una Materia","Física", "Matemáticas", "Programacion", "Electronica"};
+    String[] materias = {"Seleccione una Materia","Calculo Diferencial", "Algebra Lineal", "Calculo I", "LectoEscritura","Idiomas","Programacion Basica","POO","Circuitos Electricos","Electronica Digital","Fisica 1","Fisica 2"};
     String[] prioridades = {"Baja", "Media", "Alta"};
     JComboBox<String> materiaComboBox = new JComboBox<>(materias);
     JComboBox<String> prioridadComboBox = new JComboBox<>(prioridades);
@@ -33,7 +33,7 @@ public class Interfaz extends JFrame {
         setLayout(null);
         //inicializacion de todos los elentos
         //inicio
-        titulo = new JLabel("Bienvenido, Estudiante");
+        titulo = new JLabel("Bienvenido");
         texto = new JLabel("Gestión de tutorías universitarias. Selecciona una opción:");
         //agregar
         asignatura = new JLabel("Asignatura:");
