@@ -41,19 +41,20 @@ public class GestorTutorias implements ControladorEstudiante {
 
         // Se añade la tutoría a la lista de tutorías asignada al estudiante.
         // Se comprueba si ya existe la clave del estudiante en las tutorías
-        // Si no es así, se crea la nueva clave con una nueva lista.
+        // Si no es así, se crea la nueva clave con una nueva liusta.
         ListaEnlazada<Tutoria> listaEstudiante = tutoriasPorEstudiante.get(idEstudiante);
         if (listaEstudiante == null) {
-            tutoriasPorEstudiante.put(idEstudiante, new ListaEnlazada<>());
+            listaEstudiante = new ListaEnlazada<>();
+            tutoriasPorEstudiante.put(idEstudiante, listaEstudiante);
         }
         listaEstudiante.insert(newtutoria);
-
         // Se agrega la tutoría al montículo de tutorias del tutor, segun prioridad
         // De igual manera, se crea nuevo el monticulo si no está
         // Se añade la tutoria al monticulo ya existente.
         MaxHeap<Tutoria> heapTutor = tutoriasPendientesPorTutor.get(idTutor);
         if (heapTutor == null) {
-            tutoriasPendientesPorTutor.put(idTutor, new ArrayMaxHeap());
+            heapTutor = new ArrayMaxHeap();
+            tutoriasPendientesPorTutor.put(idTutor, heapTutor);
         }
         heapTutor.insert(newtutoria);
     }
@@ -105,8 +106,12 @@ public class GestorTutorias implements ControladorEstudiante {
 
         // Eliminamos la tutoría en las tutorias pendientes del estudiante
         if (tutoriasPorEstudiante.find(idEstudiante)) tutoriasPorEstudiante.get(idEstudiante).delete(tutoria);
-
         // Se añade la tutoría al histórico de tutorías.
-        if (historicoTutorias.find(idEstudiante)) historicoTutorias.get(idEstudiante).insert(tutoria);
+        ListaEnlazada<Tutoria> historial = historicoTutorias.get(idEstudiante);
+        if (historial == null) {
+            historial = new ListaEnlazada<>();
+            historicoTutorias.put(idEstudiante, historial);
+        }
+        historial.insert(tutoria);
     }
 }
