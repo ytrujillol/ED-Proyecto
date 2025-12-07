@@ -139,6 +139,7 @@ public class Main {
             }
         }
 
+        // Se crea el objeto 'gestor', correspondiente al gestor de tutorías. Inicializado con estructuras ya definidas.
         GestorTutorias gestor = new GestorTutorias(estudiantesPorDocumento, tutoriasEstudiante, tutoriasPendientes, historicoEstudiante, tutoresPorAsignatura);
 
 
