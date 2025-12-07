@@ -1,6 +1,8 @@
+package modules;
+
 import java.time.LocalDate;
 
-class Tutoria implements Comparable<Tutoria>{
+public class Tutoria implements Comparable<Tutoria>{
     private int idTutoria = 0;
     
     private String asignatura, horario;
@@ -9,16 +11,16 @@ class Tutoria implements Comparable<Tutoria>{
     private String estado;
     private LocalDate fecha;
     
-    public Tutoria(int idEstudiante, int idTutor, String asignatura, String horario, int prioridad, LocalDate fecha){
+    public Tutoria(String idEstudiante, String idTutor, String asignatura, String horario, int prioridad){
         this.idTutoria++; //La primera tutoría inicia con ID 1 y va aumentando
         this.idEstudiante = idEstudiante;
         this.idTutor = idTutor;
         this.asignatura = asignatura;
         this.horario = horario;
         this.prioridad = prioridad;
-        this.fecha = fecha;
+        this.fecha = LocalDate.now();
     }
-    
+
     //---------------getters---------------------------
     public String getAsignatura(){
         return asignatura;
@@ -70,8 +72,7 @@ class Tutoria implements Comparable<Tutoria>{
         this.fecha = fecha;
     }
 
-    public int compareTo (Tutoria otra){ //Compara las tutorías por prioridad asignada
+    public int compareTo (Tutoria otra) { //Compara las tutorías por prioridad asignada
         return Integer.compare(this.prioridad, otra.prioridad);
     }
-    
 }

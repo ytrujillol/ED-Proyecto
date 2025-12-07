@@ -1,5 +1,7 @@
-import jsource.ListaEnlazada;
-class Tutor{
+package modules;
+import data_structures.*;
+
+public class Tutor {
   //atributos
   private String documento;
   private String nombre;

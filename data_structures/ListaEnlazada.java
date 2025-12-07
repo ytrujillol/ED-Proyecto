@@ -2,13 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package source;
+package data_structures;
 
 /**
  *
  * @author adria_6
  */
-public class ListaEnlazada<T> implements LinkedList<T> {
+public class ListaEnlazada<T> implements LList<T> {
     private Nodo<T> head;
     private Nodo<T> tail;
     private int size;

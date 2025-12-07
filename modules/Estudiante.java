@@ -1,4 +1,6 @@
-class Estudiante{
+package modules;
+
+public class Estudiante {
     private String documento;
     private String nombre;
     private String correoInstitucional;
@@ -28,19 +30,23 @@ class Estudiante{
     public void setNombre(String nombre){
         this.nombre = nombre;
     }
-    
+
     public void setDocumento(String documento){
         this.documento = documento;
     }
-    
+
     public void setCorreoInstitucional(String correoInstitucional){
         this.correoInstitucional = correoInstitucional;
     }
-    
+
     public void setSemestre(int semestre){
         this.semestre = semestre;
     }
-    
+
     //Metodos de validacion estudiante---------------
+    
+    
+    
+    
     
 }
