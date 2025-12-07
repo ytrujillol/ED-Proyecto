@@ -10,7 +10,7 @@ public class GestorTutorias implements ControladorEstudiante {
     // Se asume que estas estructuras son provistas por otras partes del sistema.
     private final HashMap<String, Estudiante> estudiantes; // clave: idEstudiante
     private final HashMap<String, ListaEnlazada<Tutoria>> tutoriasPorEstudiante; // clave: idEstudiante
-    private final HashMap<String, MaxHeap<Tutoria>> tutoriasPendientesPorTutor; // clave: idTutor
+    private final HashMap<String, ArrayMaxHeap> tutoriasPendientesPorTutor; // clave: idTutor
     private final HashMap<String, ListaEnlazada<Tutoria>> historicoTutorias; // clave: idEstudiante historial general o por estudiante
     private final HashMap<String, Tutor[]> tutoresPorAsignatura; // clave: asignatura
 
@@ -18,7 +18,7 @@ public class GestorTutorias implements ControladorEstudiante {
     public GestorTutorias(
             HashMap<String, Estudiante> estudiantes,
             HashMap<String, ListaEnlazada<Tutoria>> tutoriasPorEstudiante,
-            HashMap<String, MaxHeap<Tutoria>> tutoriasPendientesPorTutor,
+            HashMap<String, ArrayMaxHeap> tutoriasPendientesPorTutor,
             HashMap<String, ListaEnlazada<Tutoria>> historicoTutorias,
             HashMap<String, Tutor[]> tutoresPorAsignatura
             ) {
@@ -51,7 +51,7 @@ public class GestorTutorias implements ControladorEstudiante {
         // Se agrega la tutoría al montículo de tutorias del tutor, segun prioridad
         // De igual manera, se crea nuevo el monticulo si no está
         // Se añade la tutoria al monticulo ya existente.
-        MaxHeap<Tutoria> heapTutor = tutoriasPendientesPorTutor.get(idTutor);
+        ArrayMaxHeap heapTutor = tutoriasPendientesPorTutor.get(idTutor);
         if (heapTutor == null) {
             heapTutor = new ArrayMaxHeap();
             tutoriasPendientesPorTutor.put(idTutor, heapTutor);
