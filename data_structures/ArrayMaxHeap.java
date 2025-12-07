@@ -1,27 +1,26 @@
-package data_structures;
 import java.util.ArrayList;
 
-public class ArrayMaxHeap<T extends Comparable<T>> implements MaxHeap<T>{
-    private ArrayList<T> heap;
+public class ArrayMaxHeap implements MaxHeap<Tutoria>{
+    private ArrayList<Tutoria> heap;
     
     public ArrayMaxHeap(){
         heap = new ArrayList<>();
     }
     
     @Override 
-    public void insert(T element){
+    public void insert(Tutoria element){
         heap.add(element);
         siftUp(size()-1);
     }
     
     @Override
-    public T extractMax(){
+    public Tutoria extractMax(){
         if (isEmpty()){
             return null;
         }
         
-        T max = heap.get(0);
-        T last = heap.remove(size()-1);
+        Tutoria max = heap.get(0);
+        Tutoria last = heap.remove(size()-1);
         
         if(!isEmpty()){
             heap.set(0,last);
@@ -29,7 +28,7 @@ public class ArrayMaxHeap<T extends Comparable<T>> implements MaxHeap<T>{
         }
         return max;
     }
-
+    
     @Override
     public boolean isEmpty(){
         return heap.isEmpty();
@@ -49,36 +48,34 @@ public class ArrayMaxHeap<T extends Comparable<T>> implements MaxHeap<T>{
     private int getRightChild(int i){
         return 2*i+2;
     }
-
+    
     private void swap(int i, int j){
-        T temp = heap.get(i);
+        Tutoria temp = heap.get(i);
         heap.set(i, heap.get(j));
         heap.set(j,temp);
     }
-
-    @Override
-    public void siftUp(int i){
+    
+    private void siftUp(int i){
         while(i>0){
             int parent = getParent(i);
-            if (heap.get(i).compareTo(heap.get(parent)) <= 0){
+            if (heap.get(i).getPrioridad() <= heap.get(parent).getPrioridad()){
                 break;
             }
             swap(i, parent);
             i = parent;
         }
     }
-
-    @Override
-    public void siftDown(int i){
+    
+    private void siftDown(int i){
         int left = getLeftChild(i);
         int right = getRightChild(i);
         int maxIndex = i;
         
-        if(left < size() && heap.get(left).compareTo(heap.get(maxIndex)) > 0){
+        if(left < size() && heap.get(left).getPrioridad() > heap.get(maxIndex).getPrioridad()){
             maxIndex = left;
         }
         
-        if(right < size() && heap.get(right).compareTo(heap.get(maxIndex)) > 0){
+        if(right < size() && heap.get(right).getPrioridad() > heap.get(maxIndex).getPrioridad()){
             maxIndex = right;
         }
         
@@ -88,16 +85,36 @@ public class ArrayMaxHeap<T extends Comparable<T>> implements MaxHeap<T>{
         }
     }
     
-    private void changePriority(int i, T newPriority){
-        //Por implementar
+    private void changePriority(int i, int nuevaPrioridad) {
+    
+        int viejaPrioridad = heap.get(i).getPrioridad();
+        heap.get(i).setPrioridad(nuevaPrioridad);
+        if (nuevaPrioridad > viejaPrioridad) {
+            siftUp(i);
+        }
+        else {
+            siftDown(i);
+        }
     }
-
-    @Override
-    public T peekMax(){
+    
+    public Tutoria peek(){
         if (isEmpty()){
             return null;
         }
         return heap.get(0);
     }
-
+    
+    public boolean remove (Tutoria t){
+        Tutoria eliminado = null;
+        
+        for (int i=0; i<size(); i++){
+            Tutoria actual = heap.get(i);
+            if (t.getIdTutoria() == actual.getIdTutoria()){
+                changePriority(i, Integer.MAX_VALUE);
+                eliminado = extractMax();
+                break;
+            }
+        }
+        return eliminado != null;
+    }    
 }

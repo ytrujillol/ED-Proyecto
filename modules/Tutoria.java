@@ -2,11 +2,11 @@ package modules;
 
 import java.time.LocalDate;
 
-public class Tutoria implements Comparable<Tutoria>{
+class Tutoria() implements Comparable<Tutoria>{
     private int idTutoria = 0;
     
     private String asignatura, horario;
-    private final String idEstudiante, idTutor;
+    private int idEstudiante, idTutor;
     private int prioridad;
     private String estado;
     private LocalDate fecha;
@@ -20,11 +20,7 @@ public class Tutoria implements Comparable<Tutoria>{
         this.prioridad = prioridad;
         this.fecha = LocalDate.now();
     }
-    
-    public int compareTo (Tutoria otra){ //Compara las tutorías por prioridad asignada
-        return Integer.compare(this.prioridad, otra.prioridad);
-    }
-    
+
     //---------------getters---------------------------
     public String getAsignatura(){
         return asignatura;
@@ -44,9 +40,40 @@ public class Tutoria implements Comparable<Tutoria>{
     public String getIdTutor(){
         return idTutor;
     }
+    public int getPrioridad(){
+        return prioridad;
+    }
     public LocalDate getFecha(){
         return fecha;
     }
+    //---------------setters---------------------------
+    public void setAsignatura(String asignatura) {
+        this.asignatura = asignatura;
+    }
+    public void setHorario(String horario) {
+        this.horario = horario;
+    }
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+    public void setIdTutoria(int idTutoria) {
+        this.idTutoria = idTutoria;
+    }
+    public void setIdEstudiante(String idEstudiante) {
+        this.idEstudiante = idEstudiante;
+    }
+    public void setIdTutor(String idTutor) {
+        this.idTutor = idTutor;
+    }
+    public void setPrioridad(int prioridad) {
+        this.prioridad = prioridad;
+    }
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
+    }
+
+    public int compareTo (Tutoria otra){ //Compara las tutorías por prioridad asignada
+        return Integer.compare(this.prioridad, otra.prioridad);
     //-----------setters-------------------------------
     // public void setPrioridad(int prioridad){    Por implementar
     //      this.prioridad = prioridad;
