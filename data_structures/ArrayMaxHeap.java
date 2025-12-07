@@ -1,7 +1,10 @@
+package data_structures;
+
 import java.util.ArrayList;
+import modules.*;
 
 public class ArrayMaxHeap implements MaxHeap<Tutoria>{
-    private ArrayList<Tutoria> heap;
+    private final ArrayList<Tutoria> heap;
     
     public ArrayMaxHeap(){
         heap = new ArrayList<>();
@@ -55,7 +58,7 @@ public class ArrayMaxHeap implements MaxHeap<Tutoria>{
         heap.set(j,temp);
     }
     
-    private void siftUp(int i){
+    public void siftUp(int i){
         while(i>0){
             int parent = getParent(i);
             if (heap.get(i).getPrioridad() <= heap.get(parent).getPrioridad()){
@@ -65,8 +68,8 @@ public class ArrayMaxHeap implements MaxHeap<Tutoria>{
             i = parent;
         }
     }
-    
-    private void siftDown(int i){
+
+    public void siftDown(int i){
         int left = getLeftChild(i);
         int right = getRightChild(i);
         int maxIndex = i;
@@ -97,7 +100,7 @@ public class ArrayMaxHeap implements MaxHeap<Tutoria>{
         }
     }
     
-    public Tutoria peek(){
+    public Tutoria peekMax(){
         if (isEmpty()){
             return null;
         }
