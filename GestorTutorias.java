@@ -1,5 +1,6 @@
 import data_structures.*;
 import modules.*;
+import java.time.LocalDate;
 
 // Implementación del controlador de la vista del estudiante.
 // Orquesta las operaciones de solicitud, cancelación y consulta
@@ -37,7 +38,7 @@ public class GestorTutorias implements ControladorEstudiante {
         if (!estudiantes.find(idEstudiante) || !tutoresPorAsignatura.find(idTutor)) return;
 
         // Se crea la nueva tutoria
-        Tutoria newtutoria = new Tutoria(idEstudiante, idTutor, asignatura, horario, prioridad);
+        Tutoria newtutoria = new Tutoria(idEstudiante, idTutor, asignatura, horario, prioridad, LocalDate.now());
 
         // Se añade la tutoría a la lista de tutorías asignada al estudiante.
         // Se comprueba si ya existe la clave del estudiante en las tutorías
