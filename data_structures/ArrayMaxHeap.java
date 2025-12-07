@@ -100,24 +100,26 @@ public class ArrayMaxHeap implements MaxHeap<Tutoria>{
         }
     }
     
+    @Override
     public Tutoria peekMax(){
         if (isEmpty()){
             return null;
         }
         return heap.get(0);
     }
-    
-    public boolean remove(Tutoria t){
-        Tutoria eliminado = null;
+
+    @Override
+    public boolean remove(Tutoria t) {
+        Tutoria delete = null;
         
-        for (int i=0; i<size(); i++){
+        for (int i=0; i<size(); i++) {
             Tutoria actual = heap.get(i);
-            if (t.getIdTutoria() == actual.getIdTutoria()){
+            if (t.equals(actual)) {
                 changePriority(i, Integer.MAX_VALUE);
-                eliminado = extractMax();
+                delete = extractMax();
                 break;
             }
         }
-        return eliminado != null;
+        return delete != null;
     }    
 }
