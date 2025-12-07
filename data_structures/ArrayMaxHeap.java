@@ -107,7 +107,7 @@ public class ArrayMaxHeap implements MaxHeap<Tutoria>{
         return heap.get(0);
     }
     
-    public boolean remove (Tutoria t){
+    public boolean remove(Tutoria t){
         Tutoria eliminado = null;
         
         for (int i=0; i<size(); i++){
