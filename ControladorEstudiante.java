@@ -1,14 +1,10 @@
+import data_structures.ListaEnlazada;
+import modules.*;
+
 // Interfaz para la lógica de la vista del estudiante.
 // Se encarga de orquestar las opciones: solicitar tutoría,
 // cancelar tutoría y ver historial, según el diagrama de flujo.
 public interface ControladorEstudiante {
-
-    /**
-     * Punto de entrada para la vista del estudiante.
-     * Muestra el menú principal del estudiante y
-     * dirige a la opción seleccionada.
-     */
-    void mostrarMenuEstudiante();
 
     /**
      * Flujo completo para solicitar una tutoría:
@@ -17,7 +13,7 @@ public interface ControladorEstudiante {
      * - Elegir prioridad.
      * - Confirmar y registrar la tutoría.
      */
-    void solicitarTutoria();
+    void solicitarTutoria(String idTutor, String idEstudiante, String asignatura, String horario, int prioridad);
 
     /**
      * Flujo para cancelar una tutoría:
@@ -25,11 +21,20 @@ public interface ControladorEstudiante {
      * - Seleccionar tutoría a cancelar.
      * - Confirmar cancelación.
      */
-    void cancelarTutoria();
+    void cancelarTutoria(Tutoria tutoria);
 
     /**
      * Flujo para consultar el historial de tutorías del estudiante:
      * - Mostrar tutorías realizadas y su información básica.
      */
-    void verHistorial();
+    ListaEnlazada<Tutoria> verHistorial(String idEstudiante);
+
+
+    /**
+     * Flujo para dar por finalizada una tutoría.
+     * - Se extraerá del montículo
+     * - Se agrega al histórico de tutorías
+     * - Se elimina de las tutorías pendientes del estudiante.
+     */
+    void finalizar(String idTutor);
 }

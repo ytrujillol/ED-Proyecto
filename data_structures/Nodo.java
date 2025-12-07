@@ -1,4 +1,4 @@
-package source;
+package data_structures;
 
 // Nodos para almacenar información de cualquier tipo mediante objetos en otras estructuras.
 public class Nodo<T> {

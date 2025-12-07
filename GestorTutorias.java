@@ -1,84 +1,116 @@
-import java.util.HashMap;
+import data_structures.*;
+import modules.*;
+import java.time.LocalDate;
 
 // Implementación del controlador de la vista del estudiante.
 // Orquesta las operaciones de solicitud, cancelación y consulta
 // de historial de tutorías, según el flujo definido para el sistema.
-public class ControladorEstudianteImpl implements ControladorEstudiante {
+public class GestorTutorias implements ControladorEstudiante {
 
     // Estructuras principales que usa el controlador.
     // Se asume que estas estructuras son provistas por otras partes del sistema.
-    private HashMap<String, Estudiante> estudiantes; // clave: idEstudiante
-    private HashMap<String, LinkedList<Tutoria>> tutoriasPorEstudiante; // clave: idEstudiante
-    private HashMap<String, MaxHeap<Tutoria>> tutoriasPendientesPorTutor; // clave: idTutor
-    private LinkedList<Tutoria> historicoTutorias; // historial general o por estudiante
-    private HashMap<String, Tutor[]> tutoresPorAsignatura; // clave: asignatura
+    private final HashMap<String, Estudiante> estudiantes; // clave: idEstudiante
+    private final HashMap<String, ListaEnlazada<Tutoria>> tutoriasPorEstudiante; // clave: idEstudiante
+    private final HashMap<String, ArrayMaxHeap> tutoriasPendientesPorTutor; // clave: idTutor
+    private final HashMap<String, ListaEnlazada<Tutoria>> historicoTutorias; // clave: idEstudiante historial general o por estudiante
+    private final HashMap<String, Tutor[]> tutoresPorAsignatura; // clave: asignatura
 
     // Constructor. En una siguiente iteración se pueden recibir estas estructuras por parámetros.
-    public ControladorEstudianteImpl() {
-        // TODO: inicializar estructuras o recibirlas por parámetros.
+    public GestorTutorias(
+            HashMap<String, Estudiante> estudiantes,
+            HashMap<String, ListaEnlazada<Tutoria>> tutoriasPorEstudiante,
+            HashMap<String, ArrayMaxHeap> tutoriasPendientesPorTutor,
+            HashMap<String, ListaEnlazada<Tutoria>> historicoTutorias,
+            HashMap<String, Tutor[]> tutoresPorAsignatura
+            ) {
+
+        this.estudiantes = estudiantes;
+        this.tutoriasPorEstudiante = tutoriasPorEstudiante;
+        this.tutoriasPendientesPorTutor = tutoriasPendientesPorTutor;
+        this.historicoTutorias = historicoTutorias;
+        this.tutoresPorAsignatura = tutoresPorAsignatura;
     }
 
     @Override
-    public void mostrarMenuEstudiante() {
-        // TODO:
-        // 1. Mostrar opciones del menú (solicitar tutoría, cancelar tutoría, ver historial, salir).
-        // 2. Leer opción seleccionada por el estudiante.
-        // 3. Invocar solicitarTutoria(), cancelarTutoria() o verHistorial()
-        //    según la opción elegida.
+    public void solicitarTutoria(String idTutor, String idEstudiante, String asignatura, String horario, int prioridad) {
+
+        // Comprueba que exista el estudiante y el tutor.
+        if (!estudiantes.find(idEstudiante) || !tutoresPorAsignatura.find(idTutor)) return;
+
+        // Se crea la nueva tutoria
+        Tutoria newtutoria = new Tutoria(idEstudiante, idTutor, asignatura, horario, prioridad, LocalDate.now());
+
+        // Se añade la tutoría a la lista de tutorías asignada al estudiante.
+        // Se comprueba si ya existe la clave del estudiante en las tutorías
+        // Si no es así, se crea la nueva clave con una nueva liusta.
+        ListaEnlazada<Tutoria> listaEstudiante = tutoriasPorEstudiante.get(idEstudiante);
+        if (listaEstudiante == null) {
+            listaEstudiante = new ListaEnlazada<>();
+            tutoriasPorEstudiante.put(idEstudiante, listaEstudiante);
+        }
+        listaEstudiante.insert(newtutoria);
+        // Se agrega la tutoría al montículo de tutorias del tutor, segun prioridad
+        // De igual manera, se crea nuevo el monticulo si no está
+        // Se añade la tutoria al monticulo ya existente.
+        ArrayMaxHeap heapTutor = tutoriasPendientesPorTutor.get(idTutor);
+        if (heapTutor == null) {
+            heapTutor = new ArrayMaxHeap();
+            tutoriasPendientesPorTutor.put(idTutor, heapTutor);
+        }
+        heapTutor.insert(newtutoria);
     }
 
     @Override
-    public void solicitarTutoria() {
-        // TODO:
-        // 1. Permitir al estudiante elegir la asignatura.
-        // 2. Usar tutoresPorAsignatura para obtener tutores de esa asignatura.
-        //    - Si no hay tutores disponibles, mostrar mensaje y volver al menú.
-        //
-        // 3. Construir la lista de horarios disponibles.
-        //    - Si no hay horarios disponibles, mostrar mensaje y volver al menú.
-        //
-        // 4. Pedir al estudiante una prioridad entre 1 y 5.
-        // 5. Crear el objeto Tutoria correspondiente.
-        // 6. Insertar la tutoría en:
-        //    - tutoriasPendientesPorTutor (MaxHeap<Tutoria> asociado al tutor).
-        //    - tutoriasPorEstudiante (LinkedList<Tutoria> asociada al estudiante).
-        // 7. Mostrar mensaje de confirmación y volver al menú.
+    public void cancelarTutoria(Tutoria tutoria) {
+        // Obtenemos la información de la tutoría
+        String idEstudiante =  tutoria.getIdEstudiante();
+        String idTutor = tutoria.getIdTutor();
+
+        // Comprobamos que la clave el estudiante y el tutor existan; y que no estén vacías la lista y el heap
+        if (!tutoriasPorEstudiante.find(idEstudiante) || tutoriasPorEstudiante.get(idEstudiante).isEmpty()) return;
+        if (!tutoriasPendientesPorTutor.find(idTutor) || tutoriasPendientesPorTutor.get(idTutor).isEmpty()) return;
+
+        // Eliminamos la tutoría de la lista de tutorias del estudiante
+        tutoriasPorEstudiante.get(idEstudiante).delete(tutoria);
+
+        // Eliminamos la tutoria del monticulo de tutorias del tutor
+        tutoriasPendientesPorTutor.get(idTutor).remove(tutoria);
     }
 
     @Override
-    public void cancelarTutoria() {
-        // TODO:
-        // 1. Obtener la lista de tutorías vigentes del estudiante
-        //    desde tutoriasPorEstudiante.
-        // 2. Si la lista está vacía, mostrar "No hay tutorías agendadas"
-        //    y volver al menú.
-        //
-        // 3. Mostrar las tutorías vigentes en pantalla.
-        // 4. Permitir seleccionar una tutoría a cancelar.
-        // 5. Mostrar mensaje de advertencia / confirmación.
-        // 6. Si se confirma la cancelación:
-        //    - Eliminar la tutoría de tutoriasPendientesPorTutor.
-        //    - Eliminarla de tutoriasPorEstudiante.
-        //    - (Opcional) registrar la cancelación en historicoTutorias si así se define.
-        //    - Mostrar mensaje de confirmación.
-        // 7. Volver al menú.
+    public ListaEnlazada<Tutoria> verHistorial(String idEstudiante) {
+        // Se comprueba si tenemos la clave o no.
+        // Se comprueba si está vacía la lista de tutorias del estudiante.
+        if (!historicoTutorias.find(idEstudiante) || historicoTutorias.get(idEstudiante).isEmpty()) return null;
+
+        // se retorna la lista de tutorías pasadas.
+        ListaEnlazada<Tutoria> tutorias;
+
+        // Se busca y guarda la lista de tutorías completadas del estudiante.
+        tutorias = historicoTutorias.get(idEstudiante);
+
+        // se retorna la lista obtenida; será manejada por la interfaz a la hora de mostrar.
+        return tutorias;
     }
 
     @Override
-    public void verHistorial() {
-        // TODO:
-        // 1. Obtener el historial de tutorías del estudiante
-        //    (desde historicoTutorias o una estructura similar).
-        // 2. Si el historial está vacío, mostrar mensaje y volver al menú.
-        // 3. Mostrar las tutorías realizadas (asignatura, tutor, fecha, etc.).
-        // 4. Preguntar si desea regresar al menú principal y hacerlo.
-    }
+    public void finalizar(String idTutor) {
+        // Eliminamos la tutoría del montículo de tutorías.
+        if (!tutoriasPendientesPorTutor.find(idTutor) || tutoriasPendientesPorTutor.get(idTutor).isEmpty()) return;
 
-    // Métodos auxiliares (a definir en futuras iteraciones), por ejemplo:
-    //
-    // private String leerOpcionMenu() { ... }
-    // private String leerAsignatura() { ... }
-    // private int leerPrioridad() { ... }
-    // private void mostrarMensaje(String mensaje) { ... }
-    // etc.
+        Tutoria tutoria = tutoriasPendientesPorTutor.get(idTutor).extractMax();
+
+        // Obtenemos informacion de la tutoria: idEstudiante e idTutor
+        String idEstudiante = tutoria.getIdEstudiante();
+
+        // Eliminamos la tutoría en las tutorias pendientes del estudiante
+        if (tutoriasPorEstudiante.find(idEstudiante)) tutoriasPorEstudiante.get(idEstudiante).delete(tutoria);
+        // Se añade la tutoría al histórico de tutorías.
+        ListaEnlazada<Tutoria> historial = historicoTutorias.get(idEstudiante);
+        if (historial == null) {
+            historial = new ListaEnlazada<>();
+            historicoTutorias.put(idEstudiante, historial);
+        }
+        historial.insert(tutoria);
+    }
 }
