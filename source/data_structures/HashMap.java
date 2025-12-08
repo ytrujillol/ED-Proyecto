@@ -112,10 +112,10 @@ public class HashMap<K, V> implements Map<K, V> {
             if (equalsKey(key, e.key)) {
                 return e;
             }
+
         }
         return null;
     }
-
     /** Compute bucket index for a key (null key goes to bucket 0). */
     private int bucketIndex(K key) {
         if (key == null) return 0;

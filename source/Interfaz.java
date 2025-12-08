@@ -78,7 +78,7 @@ public class Interfaz extends JFrame {
 
         panel.setLayout(null);
         panel.setBackground(Color.WHITE);
-        panel.setBounds(40, 40, 570, 400); // similar a max-width: 570px y margin
+        panel.setBounds(0, 0, 650, 500); // similar a max-width: 570px y margin
         panel.setBorder(new LineBorder(new Color(0xE5E7EB), 1, true));
         add(panel);
 
@@ -104,7 +104,7 @@ public class Interfaz extends JFrame {
         // Botón SIGUIENTE (azul)
         siguiente.setBackground(new Color(0x2563EB));
         siguiente.setForeground(Color.WHITE);
-        siguiente.setBounds(75, 300, 500, 50);
+        siguiente.setBounds(75, 330, 500, 50);
 
         // Label TITULO
         titulo.setFont(new Font("Arial", Font.BOLD, 24));

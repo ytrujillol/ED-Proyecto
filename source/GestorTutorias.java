@@ -35,8 +35,8 @@ public class GestorTutorias implements ControladorEstudiante {
     public void solicitarTutoria(String idTutor, String idEstudiante, String asignatura, String horario, int prioridad) {
 
         // Comprueba que exista el estudiante y el tutor.
-        if (!estudiantes.find(idEstudiante) || !tutoresPorAsignatura.find(idTutor)) return;
-
+        if (!estudiantes.find(idEstudiante) || !tutoresPorAsignatura.find(asignatura)) {System.out.println("No Agregada"); return ;}
+        
         // Se crea la nueva tutoria
         Tutoria newtutoria = new Tutoria(idEstudiante, idTutor, asignatura, horario, prioridad, LocalDate.now());
 
