@@ -24,4 +24,4 @@ El sistema tiene como propósito:
 ## Lenguajes de programación usados
 
 - Lenguaje principal: **Java** 
-- Otros: por definir (librerías o frameworks para la interfaz gráfica).
+- Otros: html para el mockup.
