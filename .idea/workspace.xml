@@ -1,48 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f03e5162-546a-41bc-aa1b-419811014c71" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ED-Proyecto.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ED-Proyecto.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/ED-Proyecto/ControladorEstudiante.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/ED-Proyecto/GestorTutorias.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/ED-Proyecto/Interfaz$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/ED-Proyecto/Interfaz$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/ED-Proyecto/Interfaz$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/ED-Proyecto/Interfaz$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/ED-Proyecto/Interfaz$5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/ED-Proyecto/Interfaz$6.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/ED-Proyecto/Interfaz$7.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/ED-Proyecto/Interfaz.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/ED-Proyecto/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/ED-Proyecto/data_structures/ArrayMaxHeap.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/ED-Proyecto/data_structures/HashMap$Entry.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/ED-Proyecto/data_structures/HashMap.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/ED-Proyecto/data_structures/LList.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/ED-Proyecto/data_structures/ListaEnlazada.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/ED-Proyecto/data_structures/Map.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/ED-Proyecto/data_structures/MaxHeap.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/ED-Proyecto/data_structures/Nodo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/ED-Proyecto/modules/Estudiante.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/ED-Proyecto/modules/Tutor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/ED-Proyecto/modules/Tutoria.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/ControladorEstudiante.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/GestorTutorias.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/Interfaz.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/data_structures/ArrayMaxHeap.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/data_structures/HashMap.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/data_structures/LList.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/data_structures/ListaEnlazada.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/data_structures/Map.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/data_structures/MaxHeap.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/data_structures/Nodo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/modules/Estudiante.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/modules/Tutor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/modules/Tutoria.java" beforeDir="false" />
+    <list default="true" id="f03e5162-546a-41bc-aa1b-419811014c71" name="Changes" comment="Reorganizacion de modulos">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,43 +12,43 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "sabenitez-unal"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;sabenitez-unal&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/ytrujillol/ED-Proyecto.git",
-    "accountId": "d9e0892c-f0ac-491f-b30a-81ec0883a77b"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/ytrujillol/ED-Proyecto.git&quot;,
+    &quot;accountId&quot;: &quot;d9e0892c-f0ac-491f-b30a-81ec0883a77b&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 0
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="36a3SeLG1FXuky7dd3gYEdIjeG2" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "configurable.group.appearance",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -104,11 +64,32 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1765230858567</updated>
-      <workItem from="1765230862963" duration="408000" />
+      <workItem from="1765230862963" duration="717000" />
     </task>
+    <task id="LOCAL-00001" summary="Reorganizacion de modulos">
+      <option name="closed" value="true" />
+      <created>1765231396050</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1765231396051</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Reorganizacion de modulos">
+      <option name="closed" value="true" />
+      <created>1765231521992</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1765231521992</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Reorganizacion de modulos" />
+    <option name="LAST_COMMIT_MESSAGE" value="Reorganizacion de modulos" />
   </component>
 </project>
