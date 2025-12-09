@@ -113,4 +113,31 @@ public class GestorTutorias implements ControladorEstudiante {
         }
         historial.insert(tutoria);
     }
+
+    public void finalizarEspecifica(Tutoria tutoria){
+        // Obtenemos la información de la tutoría
+        String idEstudiante =  tutoria.getIdEstudiante();
+        String idTutor = tutoria.getIdTutor();
+        // Comprobamos que la clave el estudiante y el tutor existan; y que no estén vacías la lista y el heap
+        if (!tutoriasPorEstudiante.find(idEstudiante) || tutoriasPorEstudiante.get(idEstudiante).isEmpty()) return;
+        if (!tutoriasPendientesPorTutor.find(idTutor) || tutoriasPendientesPorTutor.get(idTutor).isEmpty()) return;
+
+        // Eliminamos la tutoría de la lista de tutorias del estudiante
+        tutoriasPorEstudiante.get(idEstudiante).delete(tutoria);
+        // Eliminamos la tutoria del monticulo de tutorias del tutor
+        tutoriasPendientesPorTutor.get(idTutor).remove(tutoria);
+
+        //Marcamos la tutoría como finalizada
+        tutoria.setEstado("Finalizada");
+
+        // Se añade la tutoría a la lista de tutorías historicas del estudiante.
+        // Se comprueba si ya existe la clave del estudiante en las tutorías
+        // Si no es así, se crea la nueva clave con una nueva liusta.
+        ListaEnlazada<Tutoria> listaHistorico = historicoTutorias.get(idEstudiante);
+        if (listaHistorico == null) {
+            listaHistorico = new ListaEnlazada<>();
+            historicoTutorias.put(idEstudiante, listaHistorico);
+        }
+        listaHistorico.insert(tutoria);
+    }
 }
