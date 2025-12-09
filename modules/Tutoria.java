@@ -19,6 +19,7 @@ public class Tutoria implements Comparable<Tutoria>{
         this.horario = horario;
         this.prioridad = prioridad;
         this.fecha = fecha;
+        this.estado = "Activa";
     }
 
     //---------------getters---------------------------
