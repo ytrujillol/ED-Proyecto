@@ -30,7 +30,7 @@ public class Interfaz extends JFrame {
 
     JPanel panel = new JPanel();
 
-    private JButton boton1, boton2, boton3, boton4, inicio, siguiente;
+    private JButton boton1, boton2, boton3, boton4, boton5, inicio, siguiente;
 
     int control = 0;
 
@@ -53,6 +53,14 @@ public class Interfaz extends JFrame {
     private JScrollPane scrollCancelar;
     private JButton btnCancelarSeleccionada;
     private final List<Tutoria> tutoriasParaCancelar = new ArrayList<>();
+
+    private JLabel tituloFinalizar;
+    private JLabel textoFinalizar;
+    private JList<String> listaFinalizar;
+    private DefaultListModel<String> modeloFinalizar;
+    private JScrollPane scrollFinalizar;
+    private JButton btnFinalizarSeleccionada;
+    private final List<Tutoria> tutoriasParaFinalizar = new ArrayList<>();
 
     public Interfaz(GestorTutorias gestor,
                     String idEstudiante,
@@ -99,6 +107,7 @@ public class Interfaz extends JFrame {
         boton2 = new JButton("Ver historial de tutorías");
         boton3 = new JButton("Ver tutorías programadas");
         boton4 = new JButton("Cancelar tutorías");
+        boton5 = new JButton("Finalizar tutorías");
         inicio = new JButton("Inicio");
 
         // Botón SIGUIENTE (azul)
@@ -143,6 +152,7 @@ public class Interfaz extends JFrame {
         boton2.setBounds(75, 190, 500, 40);
         boton3.setBounds(75, 240, 500, 40);
         boton4.setBounds(75, 290, 500, 40);
+        boton5.setBounds(75, 340, 500, 40);
 
         boton1.setBackground(new Color(0x2563EB));
         boton1.setForeground(Color.WHITE);
@@ -150,6 +160,7 @@ public class Interfaz extends JFrame {
         boton2.setBorder(borde);
         boton3.setBorder(borde);
         boton4.setBorder(borde);
+        boton5.setBorder(borde);
 
         // Botón regresar al INICIO
         inicio.setBounds(75, 10, 100, 30);
@@ -204,6 +215,27 @@ public class Interfaz extends JFrame {
         btnCancelarSeleccionada.setForeground(Color.DARK_GRAY);
         btnCancelarSeleccionada.setBorder(new LineBorder(new Color(0x2563EB), 1));
 
+        // ========= FINALIZAR =======================
+        tituloFinalizar = new JLabel("Finalizar tutoría");
+        tituloFinalizar.setFont(new Font("Arial", Font.BOLD, 18));
+        tituloFinalizar.setForeground(new Color(0x2563EB));
+        tituloFinalizar.setBounds(75, 60, 500, 30);
+
+        textoFinalizar = new JLabel("Seleccione una tutoría programada para finalizar:");
+        textoFinalizar.setFont(new Font("Arial", Font.PLAIN, 13));
+        textoFinalizar.setBounds(75, 90, 500, 20);
+
+        modeloFinalizar = new DefaultListModel<>();
+        listaFinalizar = new JList<>(modeloFinalizar);
+        scrollFinalizar = new JScrollPane(listaFinalizar);
+        scrollFinalizar.setBounds(75, 115, 500, 185);
+
+        btnFinalizarSeleccionada = new JButton("Finalizar tutoría seleccionada");
+        btnFinalizarSeleccionada.setBounds(75, 310, 500, 40);
+        btnFinalizarSeleccionada.setBackground(new Color(0xE5E7EB));
+        btnFinalizarSeleccionada.setForeground(Color.DARK_GRAY);
+        btnFinalizarSeleccionada.setBorder(new LineBorder(new Color(0x2563EB), 1));
+
         // ========= VISIBILIDADES INICIALES =========
         // Formulario oculto
         materiaComboBox.setVisible(false);
@@ -214,7 +246,7 @@ public class Interfaz extends JFrame {
         observaciones.setVisible(false);
         siguiente.setVisible(false);
 
-        // Historial / programadas / cancelar ocultos
+        // Historial / programadas / cancelar / finalizar ocultos 
         tituloHistorial.setVisible(false);
         scrollHistorial.setVisible(false);
 
@@ -225,6 +257,11 @@ public class Interfaz extends JFrame {
         textoCancelar.setVisible(false);
         scrollCancelar.setVisible(false);
         btnCancelarSeleccionada.setVisible(false);
+
+        tituloFinalizar.setVisible(false);
+        textoFinalizar.setVisible(false);
+        scrollFinalizar.setVisible(false);
+        btnFinalizarSeleccionada.setVisible(false);
 
         // Programar una tutoría
         boton1.addActionListener(new ActionListener() {
@@ -262,6 +299,14 @@ public class Interfaz extends JFrame {
             }
         });
 
+        boton5.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                control = 5;
+                mostrarFinalizar();
+            }
+        });
+
         // Volver al Inicio
         inicio.addActionListener(new ActionListener() {
             @Override
@@ -286,10 +331,19 @@ public class Interfaz extends JFrame {
             }
         });
 
+        // Botón finalizar seleccionada
+        btnFinalizarSeleccionada.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                finalizarSeleccionada();
+            }
+        });
+
         panel.add(boton1);
         panel.add(boton2);
         panel.add(boton3);
         panel.add(boton4);
+        panel.add(boton5);
         panel.add(titulo);
         panel.add(texto);
         panel.add(inicio);
@@ -316,6 +370,13 @@ public class Interfaz extends JFrame {
         panel.add(textoCancelar);
         panel.add(scrollCancelar);
         panel.add(btnCancelarSeleccionada);
+
+        // Finalizar
+        panel.add(tituloFinalizar);
+        panel.add(textoFinalizar);
+        panel.add(scrollFinalizar);
+        panel.add(btnFinalizarSeleccionada);
+
     }
 
     // ========= CAMBIO DE VISTAS =========
@@ -325,6 +386,7 @@ public class Interfaz extends JFrame {
         boton2.setVisible(false);
         boton3.setVisible(false);
         boton4.setVisible(false);
+        boton5.setVisible(false);
         titulo.setVisible(false);
         texto.setVisible(false);
     }
@@ -335,6 +397,7 @@ public class Interfaz extends JFrame {
         boton2.setVisible(true);
         boton3.setVisible(true);
         boton4.setVisible(true);
+        boton5.setVisible(true);
         titulo.setVisible(true);
         texto.setVisible(true);
 
@@ -358,6 +421,11 @@ public class Interfaz extends JFrame {
         textoCancelar.setVisible(false);
         scrollCancelar.setVisible(false);
         btnCancelarSeleccionada.setVisible(false);
+
+        tituloFinalizar.setVisible(false);
+        textoFinalizar.setVisible(false);
+        scrollFinalizar.setVisible(false);
+        btnFinalizarSeleccionada.setVisible(false);
     }
 
     private void mostrarFormularioSolicitar() {
@@ -380,6 +448,10 @@ public class Interfaz extends JFrame {
         textoCancelar.setVisible(false);
         scrollCancelar.setVisible(false);
         btnCancelarSeleccionada.setVisible(false);
+        tituloFinalizar.setVisible(false);
+        textoFinalizar.setVisible(false);
+        scrollFinalizar.setVisible(false);
+        btnFinalizarSeleccionada.setVisible(false);
     }
 
     private void mostrarHistorial() {
@@ -414,6 +486,10 @@ public class Interfaz extends JFrame {
         textoCancelar.setVisible(false);
         scrollCancelar.setVisible(false);
         btnCancelarSeleccionada.setVisible(false);
+        tituloFinalizar.setVisible(false);
+        textoFinalizar.setVisible(false);
+        scrollFinalizar.setVisible(false);
+        btnFinalizarSeleccionada.setVisible(false);
     }
 
     private void mostrarProgramadas() {
@@ -448,6 +524,10 @@ public class Interfaz extends JFrame {
         textoCancelar.setVisible(false);
         scrollCancelar.setVisible(false);
         btnCancelarSeleccionada.setVisible(false);
+        tituloFinalizar.setVisible(false);
+        textoFinalizar.setVisible(false);
+        scrollFinalizar.setVisible(false);
+        btnFinalizarSeleccionada.setVisible(false);
     }
 
     private void mostrarCancelar() {
@@ -484,6 +564,50 @@ public class Interfaz extends JFrame {
         scrollHistorial.setVisible(false);
         tituloProgramadas.setVisible(false);
         scrollProgramadas.setVisible(false);
+        tituloFinalizar.setVisible(false);
+        textoFinalizar.setVisible(false);
+        scrollFinalizar.setVisible(false);
+        btnFinalizarSeleccionada.setVisible(false);
+    }
+
+    private void mostrarFinalizar() {
+        ocultarInicio();
+
+        modeloFinalizar.clear();
+        tutoriasParaFinalizar.clear();
+
+        ListaEnlazada<Tutoria> lista = tutoriasEstudiante.get(idEstudiante);
+        if (lista == null || lista.size() == 0) {
+            modeloFinalizar.addElement("No hay tutorías para finalizar.");
+        } else {
+            for (int i = 0; i < lista.size(); i++) {
+                Tutoria t = lista.get(i);
+                modeloFinalizar.addElement(describirTutoriaCorta(t));
+                tutoriasParaFinalizar.add(t);
+            }
+        }
+
+        tituloFinalizar.setVisible(true);
+        textoFinalizar.setVisible(true);
+        scrollFinalizar.setVisible(true);
+        btnFinalizarSeleccionada.setVisible(true);
+
+        materiaComboBox.setVisible(false);
+        asignatura.setVisible(false);
+        prioridadComboBox.setVisible(false);
+        prioridad.setVisible(false);
+        observacion.setVisible(false);
+        observaciones.setVisible(false);
+        siguiente.setVisible(false);
+
+        tituloHistorial.setVisible(false);
+        scrollHistorial.setVisible(false);
+        tituloProgramadas.setVisible(false);
+        scrollProgramadas.setVisible(false);
+        tituloCancelar.setVisible(false);
+        textoCancelar.setVisible(false);
+        scrollCancelar.setVisible(false);
+        btnCancelarSeleccionada.setVisible(false);
     }
 
     private void solicitarTutoriaDesdeFormulario() {
@@ -569,6 +693,25 @@ public class Interfaz extends JFrame {
         JOptionPane.showMessageDialog(this, "Tutoría cancelada.");
         mostrarCancelar();
         mostrarProgramadas();
+    }
+
+    private void finalizarSeleccionada() {
+        if (tutoriasParaFinalizar.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No hay tutorías seleccionables.");
+            return;
+        }
+
+        int index = listaFinalizar.getSelectedIndex();
+        if (index < 0 || index >= tutoriasParaFinalizar.size()) {
+            JOptionPane.showMessageDialog(this, "Selecciona una tutoría de la lista.");
+            return;
+        }
+
+        Tutoria t = tutoriasParaFinalizar.get(index);
+        gestor.finalizarEspecifica(t);
+        JOptionPane.showMessageDialog(this, "Tutoría finalizada.");
+        mostrarFinalizar();
+        mostrarHistorial();
     }
 
     private String describirTutoriaLarga(Tutoria t) {
